@@ -86,7 +86,7 @@ nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0
 .strength-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:6px;}
 .strength-desc{font-size:11px;line-height:1.8;color:rgba(255,255,255,0.35);font-weight:300;}
 
-.section{padding:96px 48px;scroll-margin-top:110px;}
+.section{padding:60px 48px;scroll-margin-top:110px;}
 .section-inner{max-width:1200px;margin:0 auto;}
 .section-eyebrow{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;font-weight:400;display:flex;align-items:center;gap:14px;}
 .section-eyebrow::after{content:'';flex:0 0 28px;height:1px;background:var(--gold);opacity:0.4;}
@@ -94,19 +94,19 @@ nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0
 .section-title em{font-style:italic;color:var(--gold);}
 
 .about-grid{display:grid;grid-template-columns:3fr 2fr;gap:60px;align-items:stretch;}
-.about-text{display:flex;flex-direction:column;justify-content:center;}
+.about-text{display:flex;flex-direction:column;justify-content:space-between;}
 .about-text p{font-size:15px;line-height:2.2;color:var(--text-mid);margin-bottom:24px;font-weight:300;}
 .about-text p:last-child{margin-bottom:0;}
 .about-text p strong{color:var(--charcoal-deep);font-weight:500;}
-.about-values{display:flex;flex-direction:column;justify-content:space-between;}
-.value-item{padding:28px 0 28px 28px;border-left:1px solid var(--cream-dark);position:relative;transition:border-color 0.4s;flex:1;}
+.about-values{display:flex;flex-direction:column;justify-content:space-between;height:100%;}
+.value-item{padding:28px 0 28px 28px;border-left:1px solid var(--cream-dark);position:relative;transition:border-color 0.4s;flex:1;display:flex;flex-direction:column;justify-content:center;}
 .value-item:hover{border-left-color:var(--gold);}
 .value-label{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;font-weight:400;}
 .value-title{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--charcoal-deep);margin-bottom:10px;}
 .value-desc{font-size:13px;line-height:1.9;color:var(--text-mid);font-weight:300;}
 
 /* BI SECTION */
-.bi-section{background:var(--charcoal-deep);padding:96px 48px;scroll-margin-top:110px;}
+.bi-section{background:var(--charcoal-deep);padding:60px 48px;scroll-margin-top:110px;}
 .bi-section .section-eyebrow{color:var(--gold);}
 .bi-section .section-eyebrow::after{background:var(--gold);}
 .bi-section .section-title{color:var(--white);}
@@ -123,7 +123,7 @@ nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0
 .bi-color-swatch{width:48px;height:48px;border:1px solid rgba(255,255,255,0.1);}
 .bi-color-name{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:1px;text-align:center;}
 
-.portfolio-wrap{background:var(--charcoal);padding:96px 48px;scroll-margin-top:110px;}
+.portfolio-wrap{background:var(--charcoal);padding:60px 48px;scroll-margin-top:110px;}
 .portfolio-wrap .section-title{color:var(--white);}
 .portfolio-wrap .section-eyebrow{color:var(--gold);}
 .portfolio-wrap .section-eyebrow::after{background:var(--gold);}
@@ -281,6 +281,7 @@ footer{padding:20px;}
       <div class="about-text fade-up delay-2">
         <p><strong>보노루미에르디자인</strong>은 주거공간부터 상업시설까지 다양한 공간을 설계하고 시공하는 인테리어 전문 기업입니다.</p>
         <p>좋은 공간은 그 안에 머무는 사람의 삶을 바꿉니다. 우리는 감성과 완성도가 만나는 공간을 만듭니다.</p>
+        <p>보노루미에르만의 감성으로 오래 기억되는 공간을 만들어드립니다.</p>
       </div>
       <div class="about-values">
         <div class="value-item fade-up delay-2"><div class="value-label">LUMEN</div><div class="value-title">공간을 밝히는 아이디어</div><div class="value-desc">고객의 니즈를 깊이 이해하고 창의적인 설계로 최적의 방향을 제안합니다.</div></div>
