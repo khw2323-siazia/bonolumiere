@@ -86,14 +86,14 @@ nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0
 .strength-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:6px;}
 .strength-desc{font-size:11px;line-height:1.8;color:rgba(255,255,255,0.35);font-weight:300;}
 
-.section{padding:96px 48px;scroll-margin-top:110px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
-.section-inner{max-width:1080px;margin:0 auto;}
+.section{padding:96px 48px;scroll-margin-top:110px;}
+.section-inner{max-width:1200px;margin:0 auto;}
 .section-eyebrow{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:14px;font-weight:400;display:flex;align-items:center;gap:14px;}
 .section-eyebrow::after{content:'';flex:0 0 28px;height:1px;background:var(--gold);opacity:0.4;}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,42px);font-weight:300;line-height:1.25;color:var(--charcoal-deep);margin-bottom:48px;}
 .section-title em{font-style:italic;color:var(--gold);}
 
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:stretch;}
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:60px;align-items:stretch;}
 .about-text{display:flex;flex-direction:column;justify-content:center;}
 .about-text p{font-size:15px;line-height:2.2;color:var(--text-mid);margin-bottom:24px;font-weight:300;}
 .about-text p:last-child{margin-bottom:0;}
@@ -106,7 +106,7 @@ nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0
 .value-desc{font-size:13px;line-height:1.9;color:var(--text-mid);font-weight:300;}
 
 /* BI SECTION */
-.bi-section{background:var(--charcoal-deep);padding:96px 48px;scroll-margin-top:110px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+.bi-section{background:var(--charcoal-deep);padding:96px 48px;scroll-margin-top:110px;}
 .bi-section .section-eyebrow{color:var(--gold);}
 .bi-section .section-eyebrow::after{background:var(--gold);}
 .bi-section .section-title{color:var(--white);}
@@ -123,7 +123,7 @@ nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0
 .bi-color-swatch{width:48px;height:48px;border:1px solid rgba(255,255,255,0.1);}
 .bi-color-name{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:1px;text-align:center;}
 
-.portfolio-wrap{background:var(--charcoal);padding:96px 48px;scroll-margin-top:110px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+.portfolio-wrap{background:var(--charcoal);padding:96px 48px;scroll-margin-top:110px;}
 .portfolio-wrap .section-title{color:var(--white);}
 .portfolio-wrap .section-eyebrow{color:var(--gold);}
 .portfolio-wrap .section-eyebrow::after{background:var(--gold);}
@@ -148,7 +148,7 @@ nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0
 .pcard-desc{font-size:11px;color:rgba(255,255,255,0.38);line-height:1.75;font-weight:300;}
 .portfolio-note{text-align:center;margin-top:28px;font-size:11px;color:rgba(255,255,255,0.2);font-style:italic;font-family:'Cormorant Garamond',serif;letter-spacing:1px;}
 
-.process-wrap{background:var(--cream-mid);scroll-margin-top:110px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+.process-wrap{background:var(--cream-mid);scroll-margin-top:110px;}
 .process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:56px;border:1px solid var(--cream-dark);}
 .step{padding:32px 24px;border-right:1px solid var(--cream-dark);background:var(--white);transition:background 0.3s,transform 0.3s;}
 .step:last-child{border-right:none;}
@@ -158,7 +158,7 @@ nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0
 .step-title{font-size:12px;font-weight:500;color:var(--charcoal-deep);margin-bottom:8px;}
 .step-desc{font-size:11px;line-height:1.9;color:var(--text-light);font-weight:300;}
 
-.contact-wrap{background:var(--charcoal-deep);scroll-margin-top:110px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+.contact-wrap{background:var(--charcoal-deep);scroll-margin-top:110px;}
 .contact-wrap .section-eyebrow{color:var(--gold);}
 .contact-wrap .section-eyebrow::after{background:var(--gold);}
 .contact-wrap .section-title{color:var(--white);}
@@ -279,14 +279,13 @@ footer{padding:20px;}
     <h2 class="section-title fade-up delay-1">설계부터 시공까지,<br><em>하나의 손으로</em></h2>
     <div class="about-grid">
       <div class="about-text fade-up delay-2">
-        <p>보노루미에르디자인은 주거공간부터 상업시설까지 <strong>다양한 공간에 특화된 인테리어 전문 기업</strong>입니다. 디자인 기획부터 시공 완료까지 일관된 퀄리티를 유지하는 원스톱 서비스를 제공합니다.</p>
-        <p>우리는 단순히 공간을 꾸미는 것이 아니라, 그 공간을 사용하는 사람의 삶과 경험을 설계합니다. 좋은 공간은 그 안에 머무는 사람을 바꿉니다.</p>
-        <p>풍부한 현장 경험과 체계적인 시공 관리로 클라이언트가 기대하는 것 이상을 만들어냅니다.</p>
+        <p><strong>보노루미에르디자인</strong>은 주거공간부터 상업시설까지 다양한 공간을 설계하고 시공하는 인테리어 전문 기업입니다.</p>
+        <p>좋은 공간은 그 안에 머무는 사람의 삶을 바꿉니다. 우리는 감성과 완성도가 만나는 공간을 만듭니다.</p>
       </div>
       <div class="about-values">
-        <div class="value-item fade-up delay-2"><div class="value-label">LUMEN</div><div class="value-title">공간을 밝히는 아이디어</div><div class="value-desc">고객의 니즈와 공간의 가능성을 깊이 이해하고, 창의적인 설계로 최적의 방향을 제안합니다.</div></div>
-        <div class="value-item fade-up delay-3"><div class="value-label">TERRA</div><div class="value-title">바탕의 견고함</div><div class="value-desc">보이지 않는 구조와 친환경 자재, 완벽한 마감 등 인테리어의 기본기를 타협 없이 지킵니다.</div></div>
-        <div class="value-item fade-up delay-4"><div class="value-label">CONNECT</div><div class="value-title">고객과의 조화</div><div class="value-desc">고객의 라이프스타일과 디자이너의 감각이 단단하게 엮여 단 하나뿐인 맞춤형 공간을 창조합니다.</div></div>
+        <div class="value-item fade-up delay-2"><div class="value-label">LUMEN</div><div class="value-title">공간을 밝히는 아이디어</div><div class="value-desc">고객의 니즈를 깊이 이해하고 창의적인 설계로 최적의 방향을 제안합니다.</div></div>
+        <div class="value-item fade-up delay-3"><div class="value-label">TERRA</div><div class="value-title">바탕의 견고함</div><div class="value-desc">친환경 자재와 완벽한 마감으로 인테리어의 기본기를 타협 없이 지킵니다.</div></div>
+        <div class="value-item fade-up delay-4"><div class="value-label">CONNECT</div><div class="value-title">고객과의 조화</div><div class="value-desc">고객의 라이프스타일과 디자이너의 감각이 엮여 단 하나뿐인 맞춤형 공간을 만듭니다.</div></div>
       </div>
     </div>
   </div>
