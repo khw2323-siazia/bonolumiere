@@ -631,15 +631,47 @@
     counts[key] = Math.max(0, counts[key] + delta);
     document.getElementById(key+'Val').innerText = counts[key];
   }
-  // 이 로컬 프로토타입용 데모 함수 — 실제 GAS 연동은 형님의 GitHub 사이트 파일에 이미 넣으신 버전을 사용하세요.
-  function submitEstimate(){
-    alert(
-      "[데모] 아래 데이터가 GAS로 전송됩니다:\n\n" +
-      "공간유형: " + document.querySelector('#modalStep1 .modal-opt.selected').innerText + "\n" +
-      "평수: " + document.getElementById('pyeongInput').value + "\n" +
-      "등급: " + selectedTier + "\n" +
-      "예상견적: " + document.getElementById('resultPrice').innerText
-    );
+
+  // ---- 실제 GAS 백엔드 연동 (배포된 웹앱 URL) ----
+  const GAS_URL = "https://script.google.com/macros/s/AKfycby-PcLPoP8f31-4s2FrbO1Q3spTkFCWCXAxeBqMkYcjPgm1kzYODlq5JpUTJi5CGHua/exec";
+
+  async function submitEstimate(){
+    const spaceTypeEl = document.querySelector('#modalStep1 .modal-opt.selected');
+    const payload = {
+      spaceType: spaceTypeEl ? spaceTypeEl.innerText : "",
+      pyeong: document.getElementById('pyeongInput').value,
+      rooms: counts.room,
+      baths: counts.bath,
+      balconies: counts.balc,
+      tier: selectedTier,
+      estimatePrice: document.getElementById('resultPrice').innerText,
+      // 아래 3개는 아직 이 화면에 입력창이 없어서 비워둡니다.
+      // 세부견적 신청 단계(연락처/주소/방문일시 폼)를 추가로 만들면 그때 채우면 됩니다.
+      name: "",
+      phone: "",
+      address: "",
+      visitDateTime: "",
+      interestedOptions: [],
+      referralCode: new URLSearchParams(window.location.search).get("ref") || "",
+    };
+
+    try {
+      const res = await fetch(GAS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ type: "estimate", data: payload }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        alert("견적이 저장됐어요! 곧 연락드릴게요.");
+      } else {
+        console.error(json.error);
+        alert("죄송해요, 잠시 후 다시 시도해주세요.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("네트워크 오류가 발생했어요. 다시 시도해주세요.");
+    }
   }
   document.querySelectorAll('.btn-primary, .cta-btn').forEach(btn=>{
     btn.addEventListener('click', openModal);
