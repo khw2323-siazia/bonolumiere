@@ -197,8 +197,25 @@
   .modal-overlay.open{display:flex;}
   .modal-card{
     background:#fff; border-radius:24px; width:440px; max-width:90vw; padding:36px;
-    box-shadow:0 30px 70px rgba(0,0,0,0.35); animation:modalIn .25s ease;
+    box-shadow:0 30px 70px rgba(0,0,0,0.35); animation:modalIn .25s ease; position:relative;
   }
+  .modal-x{
+    position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%;
+    background:var(--cream); border:none; font-size:16px; color:var(--gray); cursor:pointer;
+    display:flex; align-items:center; justify-content:center; line-height:1; transition:all .15s ease;
+  }
+  .modal-x:hover{background:var(--gold-light); color:var(--gold-deep);}
+  .confirm-overlay{
+    position:fixed; inset:0; z-index:1100; display:none; align-items:center; justify-content:center;
+    background:rgba(20,18,14,0.55);
+  }
+  .confirm-overlay.open{display:flex;}
+  .confirm-card{background:#fff; border-radius:20px; width:340px; max-width:88vw; padding:32px 28px; text-align:center; box-shadow:0 30px 60px rgba(0,0,0,0.3);}
+  .confirm-card p{font-size:15px; font-weight:700; color:var(--charcoal); margin-bottom:22px;}
+  .confirm-btns{display:flex; gap:10px;}
+  .confirm-btns button{flex:1; padding:13px; border-radius:24px; font-size:13px; font-weight:700; cursor:pointer; border:none;}
+  .confirm-keep{background:var(--gold); color:#fff;}
+  .confirm-exit{background:var(--cream); color:var(--gray); border:1px solid var(--line) !important;}
   @keyframes modalIn{from{opacity:0; transform:translateY(16px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);}}
   .modal-icon{width:32px; margin:0 auto 16px; display:block;}
   .modal-title{font-size:19px; font-weight:800; text-align:center; margin-bottom:26px;}
@@ -255,9 +272,9 @@
       <div class="eyebrow" style="text-align:left;">OUR STORY · 우리의 이야기</div>
       <div class="story-quote">바른집은 묻습니다.<br><span>"공간과 시공, 왜 늘 숨겨져 있었을까요?"</span></div>
       <div class="story-body">
-        견적을 받으려면 며칠을 기다려야 하고, 왜 이 가격인지 설명해주는 곳은 없었습니다.
-        바른집은 이 질문에서 시작했습니다 — 연락처 없이도, 내 공간의 가격을 그 자리에서 확인할 수 있는 구조를 만들었습니다.
-        계약 이후에도 현장을 상시 점검하는 SV 시스템으로, 시공이 끝나는 순간이 아니라 살아가는 동안의 신뢰를 지킵니다.
+        인테리어는 오래도록 정보의 불균형 위에 서 있었습니다. 견적은 만나야만 알 수 있었고, 가격의 기준은 늘 업체 안에만 있었습니다. 그 불균형은 결국 고객의 불안으로 돌아왔습니다.<br><br>
+        바른집은 이 질문에서 시작했습니다. 연락처를 남기지 않아도, 방문 상담을 받지 않아도 — 내 공간의 가격을 그 자리에서 확인할 수 있는 구조를 만들었습니다.<br><br>
+        계약은 끝이 아니라 시작입니다. 시공이 끝나는 순간이 아니라, 그 공간에서 살아가는 동안의 신뢰를 지키는 것 — 그것이 바른집이 짓는 것입니다.
       </div>
       <div class="pillars">
         <div class="pillar"><div class="pillar-num">01</div><div class="pillar-name">기준</div><div class="pillar-desc">정찰 가격, 표준 공정</div></div>
@@ -268,7 +285,23 @@
   </div>
 </section>
 
-<!-- TIERS -->
+<!-- SV QUALITY -->
+<section id="quality" style="background:var(--charcoal); padding:110px 48px;">
+  <div class="section-inner" style="max-width:1180px; margin:0 auto;">
+    <div class="eyebrow" style="text-align:left; color:var(--gold-light);">SV · 품질보증</div>
+    <div class="section-title" style="color:#fff; text-align:left;">우리는 이렇게 합니다</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; margin-top:20px;">
+      <div style="border-radius:20px; overflow:hidden; aspect-ratio:4/5; box-shadow:0 20px 50px rgba(0,0,0,0.3);">
+        <img src="https://images.unsplash.com/photo-1581091877018-dac6a371d50f?q=80&w=1000&auto=format&fit=crop" alt="SV 현장점검" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div style="color:#C9C5BC; font-size:15.5px; line-height:1.95;">
+        <p style="margin-bottom:22px;">바른집은 직접시공을 기준으로 합니다. 협력사와 함께 시공할 때에도, 회사 내부의 기준으로 매 공정을 검토하고 조율하며, 고객에게 인도되기 전 완벽을 꾀합니다.</p>
+        <p style="margin-bottom:22px;">현장에는 늘 SV(Supervision)팀이 있습니다. 조끼를 입고 도면과 체크리스트를 손에 든 이들이, 하루 한 번이 아니라 공정이 바뀔 때마다 현장을 다시 찾습니다. 자재가 들어오는 순간부터 마감이 끝나는 순간까지 — 눈으로 확인하고, 기준에 못 미치면 다음 공정으로 넘어가지 않습니다.</p>
+        <p>협력사가 시공하더라도, 검수는 언제나 본사 SV팀의 독립된 눈으로 이루어집니다. 시공사가 스스로를 검수하는 일은 없습니다. 그것이 바른집이 말하는 "기준"의 실체입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="tiers">
   <div class="section-inner">
     <div class="eyebrow">SERVICE · 서비스안내</div>
@@ -391,7 +424,7 @@
   </div>
 </section>
 
-<footer id="quality">
+<footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div>
@@ -414,6 +447,7 @@
 <!-- MODAL POPUP -->
 <div class="modal-overlay" id="spaceModal">
   <div class="modal-card" id="modalStep1">
+    <button class="modal-x" onclick="askClose()">✕</button>
     <svg class="demo-icon" viewBox="0 0 200 200" fill="none" style="width:32px;margin:0 auto 16px;display:block;">
       <path d="M 20,130 C 60,127 96,120 130,103" stroke="#B08B57" stroke-width="14" stroke-linecap="round"/>
       <path d="M 130,103 C 150,90 164,58 180,30 C 192,52 202,74 218,90" stroke="#2B2B2B" stroke-width="14" stroke-linecap="round" fill="none"/>
@@ -427,10 +461,11 @@
     </div>
     <div class="modal-note">상업 공간을 준비 중이신가요? <b>상업공간 견적 알아보기 ›</b></div>
     <button class="modal-next" onclick="goStep2()">다음</button>
-    <span class="modal-close" onclick="closeModal()">나중에 볼게요</span>
+    <span class="modal-close" onclick="askClose()">나중에 볼게요</span>
   </div>
 
   <div class="modal-card" id="modalStep2" style="display:none;">
+    <button class="modal-x" onclick="askClose()">✕</button>
     <div class="modal-title">기본 정보를 알려주세요</div>
     <div style="margin-bottom:16px;">
       <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">총 평수</label>
@@ -446,6 +481,7 @@
   </div>
 
   <div class="modal-card" id="modalStep3" style="display:none;">
+    <button class="modal-x" onclick="askClose()">✕</button>
     <div class="demo-top" style="padding:0 0 20px;">
       <div class="demo-title">예상 견적 결과</div>
     </div>
@@ -465,10 +501,26 @@
   </div>
 </div>
 
+<!-- EXIT CONFIRM -->
+<div class="confirm-overlay" id="confirmModal">
+  <div class="confirm-card">
+    <p>견적을 그만하시겠습니까?</p>
+    <div class="confirm-btns">
+      <button class="confirm-keep" onclick="closeConfirm()">계속할게요</button>
+      <button class="confirm-exit" onclick="forceClose()">그만할게요</button>
+    </div>
+  </div>
+</div>
+
 <script>
   let counts = {room:3, bath:2, balc:2};
   function openModal(){ document.getElementById('spaceModal').classList.add('open'); goStep1(); }
-  function closeModal(){ document.getElementById('spaceModal').classList.remove('open'); }
+  function askClose(){ document.getElementById('confirmModal').classList.add('open'); }
+  function closeConfirm(){ document.getElementById('confirmModal').classList.remove('open'); }
+  function forceClose(){
+    closeConfirm();
+    document.getElementById('spaceModal').classList.remove('open');
+  }
   function selectOpt(el){
     document.querySelectorAll('.modal-opt').forEach(o=>o.classList.remove('selected'));
     el.classList.add('selected');
