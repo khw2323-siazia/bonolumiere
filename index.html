@@ -497,7 +497,8 @@
       </div>
       <div class="footer-links">
         <a href="#">회사소개</a>
-        <a href="#">협력사 파트너 모집</a>
+        <a href="#" onclick="openOverlay('craftsmanModal'); return false;">협력사 파트너 모집</a>
+        <a href="#" onclick="openOverlay('marketerModal'); return false;">마케터 제휴 신청</a>
         <a href="#">이용약관</a>
         <a href="#">개인정보처리방침</a>
       </div>
@@ -520,9 +521,26 @@
       <div class="modal-opt" onclick="selectOpt(this)">주택</div>
       <div class="modal-opt" onclick="selectOpt(this)">오피스텔</div>
     </div>
-    <div class="modal-note">상업 공간을 준비 중이신가요? <b>상업공간 견적 알아보기 ›</b></div>
-    <button class="modal-next" onclick="goStep2()">다음</button>
+    <div class="modal-note">상업 공간을 준비 중이신가요? <b onclick="openCommercialModal()">상업공간 견적 알아보기 ›</b></div>
+    <button class="modal-next" onclick="goStep1B()">다음</button>
     <span class="modal-close" onclick="askClose()">나중에 볼게요</span>
+  </div>
+
+  <div class="modal-card" id="modalStep1B" style="display:none;">
+    <button class="modal-x" onclick="askClose()">✕</button>
+    <div class="modal-title">어떤 시공을 원하세요?</div>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+      <div class="modal-opt mode-opt selected" data-mode="full" onclick="selectMode(this)" style="text-align:left; padding:18px 20px;">
+        <div style="font-weight:800; margin-bottom:4px;">전체 인테리어</div>
+        <div style="font-size:12px; color:var(--gray); font-weight:400;">집 전체를 새로 꾸미고 싶어요 (베이직/시그니처/프레스티지)</div>
+      </div>
+      <div class="modal-opt mode-opt" data-mode="partial" onclick="selectMode(this)" style="text-align:left; padding:18px 20px;">
+        <div style="font-weight:800; margin-bottom:4px;">부분 시공</div>
+        <div style="font-size:12px; color:var(--gray); font-weight:400;">도배·바닥재·화장실·주방·중문 중 필요한 것만 골라요</div>
+      </div>
+    </div>
+    <button class="modal-next" onclick="goStep2FromMode()">다음</button>
+    <span class="modal-close" onclick="goStep1()">← 이전으로</span>
   </div>
 
   <div class="modal-card" id="modalStep2" style="display:none;">
@@ -547,7 +565,15 @@
       프리미엄 강마루 · 실크 도배 · 인조대리석 상판 · 3연동 중문 · 기본 조명
     </div>
     <button class="modal-next" onclick="goStep3()" style="margin-top:20px;">견적 확인하기</button>
-    <span class="modal-close" onclick="goStep1()">← 이전으로</span>
+    <span class="modal-close" onclick="goStep1B()">← 이전으로</span>
+  </div>
+
+  <div class="modal-card" id="modalStep2Partial" style="display:none; width:480px;">
+    <button class="modal-x" onclick="askClose()">✕</button>
+    <div class="modal-title">필요한 시공을 골라주세요</div>
+    <div id="partialItemsContainer" style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;"></div>
+    <button class="modal-next" onclick="goStep3()">견적 확인하기</button>
+    <span class="modal-close" onclick="goStep1B()">← 이전으로</span>
   </div>
 
   <div class="modal-card" id="modalStep3" style="display:none; width:520px; max-height:86vh; overflow-y:auto;">
@@ -579,7 +605,7 @@
 
     <button class="demo-btn" onclick="goStep4()" style="margin-top:16px;">카톡으로 견적 저장 + 상담 신청</button>
     <div class="demo-sub">지금 입력하신 정보가 사라지지 않게 저희가 담아둘게요</div>
-    <span class="modal-close" onclick="goStep2()" style="margin-top:14px;">← 이전으로</span>
+    <span class="modal-close" onclick="constructionMode==='full' ? goStep2() : goStep2Partial()" style="margin-top:14px;">← 이전으로</span>
   </div>
 
   <div class="modal-card" id="modalStep4" style="display:none;">
@@ -630,7 +656,115 @@
   </div>
 </div>
 
-<!-- EXIT CONFIRM -->
+<!-- COMMERCIAL QUOTE MODAL -->
+<div class="modal-overlay" id="commercialModal">
+  <div class="modal-card" id="commercialStep1">
+    <button class="modal-x" onclick="closeOverlay('commercialModal')">✕</button>
+    <div class="modal-title">상업공간 견적 신청</div>
+    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:20px;">
+      <div>
+        <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">업태</label>
+        <input type="text" id="comBizType" placeholder="카페 / 병원 / 학원 / 사무실 / 호스텔 등" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:15px; font-family:inherit;">
+      </div>
+      <div>
+        <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">주소</label>
+        <input type="text" id="comAddress" placeholder="시공을 원하시는 주소" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:15px; font-family:inherit;">
+      </div>
+      <div>
+        <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">평수</label>
+        <input type="number" id="comPyeong" placeholder="30" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:15px; font-family:inherit;">
+      </div>
+      <div>
+        <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">연락처</label>
+        <input type="tel" id="comPhone" placeholder="010-0000-0000" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:15px; font-family:inherit;">
+      </div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1;">
+          <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">희망 방문일</label>
+          <input type="date" id="comDate" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+        </div>
+        <div style="flex:1;">
+          <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">희망 시간</label>
+          <input type="time" id="comTime" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+        </div>
+      </div>
+    </div>
+    <div class="modal-note">상업공간은 모듈형 가격 없이, 방문 실측 후 개별 견적으로 안내드려요.</div>
+    <button class="modal-next" id="comSubmitBtn" onclick="submitCommercial()">견적 요청하기</button>
+    <span class="modal-close" onclick="closeOverlay('commercialModal')">닫기</span>
+  </div>
+  <div class="modal-card" id="commercialStep2" style="display:none;">
+    <div style="text-align:center; padding:20px 0;">
+      <div style="width:56px; height:56px; border-radius:50%; background:var(--sage-light); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:26px; color:var(--sage);">✓</div>
+      <div class="modal-title" style="margin-bottom:12px;">신청이 접수됐어요</div>
+      <div style="font-size:13.5px; color:var(--gray); line-height:1.8; margin-bottom:28px;">방문 일정 확인 후 담당자가 연락드릴게요.</div>
+      <button class="modal-next" onclick="closeOverlay('commercialModal')" style="margin-bottom:0;">확인했어요</button>
+    </div>
+  </div>
+</div>
+
+<!-- CRAFTSMAN (협력사) MODAL -->
+<div class="modal-overlay" id="craftsmanModal">
+  <div class="modal-card" id="craftsmanStep1">
+    <button class="modal-x" onclick="closeOverlay('craftsmanModal')">✕</button>
+    <div class="modal-title">협력사 등록 신청</div>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:18px;">
+      <input type="text" id="craCompanyName" placeholder="업체명" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="text" id="craBizNumber" placeholder="사업자등록번호 (000-00-00000)" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="text" id="craCeoName" placeholder="대표자명" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <select id="craSpecialty" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit; background:#fff;">
+        <option value="">전문분야 선택</option>
+        <option>종합시공</option><option>도배</option><option>바닥재</option><option>타일·욕실</option><option>목공·가구</option><option>전기·조명</option>
+      </select>
+      <input type="text" id="craRegion" placeholder="활동지역 (예: 서울/경기)" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="number" id="craYears" placeholder="시공경력 (년)" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="text" id="craPortfolio" placeholder="포트폴리오 링크 (선택)" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="tel" id="craPhone" placeholder="연락처" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+    </div>
+    <button class="modal-next" id="craSubmitBtn" onclick="submitCraftsman()">등록 신청하기</button>
+    <span class="modal-close" onclick="closeOverlay('craftsmanModal')">닫기</span>
+  </div>
+  <div class="modal-card" id="craftsmanStep2" style="display:none;">
+    <div style="text-align:center; padding:20px 0;">
+      <div style="width:56px; height:56px; border-radius:50%; background:var(--sage-light); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:26px; color:var(--sage);">✓</div>
+      <div class="modal-title" style="margin-bottom:12px;">등록 신청이 접수됐어요</div>
+      <div style="font-size:13.5px; color:var(--gray); line-height:1.8; margin-bottom:28px;">사업자 확인 및 심사 후 별도로 연락드릴게요.</div>
+      <button class="modal-next" onclick="closeOverlay('craftsmanModal')" style="margin-bottom:0;">확인했어요</button>
+    </div>
+  </div>
+</div>
+
+<!-- MARKETER (마케터제휴) MODAL -->
+<div class="modal-overlay" id="marketerModal">
+  <div class="modal-card" id="marketerStep1">
+    <button class="modal-x" onclick="closeOverlay('marketerModal')">✕</button>
+    <div class="modal-title">마케터 제휴 신청</div>
+    <div class="modal-grid" style="margin-bottom:14px;">
+      <div class="modal-opt mkt-type-opt selected" data-type="유튜버" onclick="selectMktType(this)">유튜버</div>
+      <div class="modal-opt mkt-type-opt" data-type="공인중개사" onclick="selectMktType(this)">공인중개사</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:18px;">
+      <input type="text" id="mktCompanyName" placeholder="상호(사업자명, 공인중개사만 해당)" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="text" id="mktChannelName" placeholder="채널명 / 부동산명" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="text" id="mktManagerName" placeholder="담당자명" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="tel" id="mktPhone" placeholder="연락처" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="text" id="mktBizNumber" placeholder="사업자등록번호 (공인중개사만 해당)" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+    </div>
+    <div class="modal-note">리워드는 계약금액의 3%이며, 승인 후 고유 코드가 발급돼요.</div>
+    <button class="modal-next" id="mktSubmitBtn" onclick="submitMarketer()">제휴 신청하기</button>
+    <span class="modal-close" onclick="closeOverlay('marketerModal')">닫기</span>
+  </div>
+  <div class="modal-card" id="marketerStep2" style="display:none;">
+    <div style="text-align:center; padding:20px 0;">
+      <div style="width:56px; height:56px; border-radius:50%; background:var(--sage-light); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:26px; color:var(--sage);">✓</div>
+      <div class="modal-title" style="margin-bottom:12px;">제휴 신청이 접수됐어요</div>
+      <div style="font-size:13.5px; color:var(--gray); line-height:1.8; margin-bottom:10px;">전용 코드가 발급되면 등록하신 연락처로 안내드려요.</div>
+      <div id="mktCodePreview" style="font-size:15px; font-weight:800; color:var(--gold-deep); margin-bottom:24px;"></div>
+      <button class="modal-next" onclick="closeOverlay('marketerModal')" style="margin-bottom:0;">확인했어요</button>
+    </div>
+  </div>
+</div>
+
 <div class="confirm-overlay" id="confirmModal">
   <div class="confirm-card">
     <p>견적을 그만하시겠습니까?</p>
@@ -644,11 +778,15 @@
 <script>
   let counts = {room:3, bath:2, balc:2};
   let selectedTier = "시그니처";
+  let constructionMode = "full";
+  let selectedMktType = "유튜버";
+
+  const GAS_URL = "https://script.google.com/macros/s/AKfycby-PcLPoP8f31-4s2FrbO1Q3spTkFCWCXAxeBqMkYcjPgm1kzYODlq5JpUTJi5CGHua/exec";
 
   const TIER_DATA = {
-    "베이직":    { price: 128, desc: "강마루 기본 시공 · 합지 도배 · PET 상판 주방 · 기본 위생기구·조명" },
-    "시그니처":  { price: 162, desc: "프리미엄 강마루 · 실크 도배 · 인조대리석 상판 · 3연동 중문" },
-    "프레스티지": { price: 244, desc: "원목마루 · 친환경 인증 도배 · 엔지니어드스톤 상판 · 맞춤 제작 중문" },
+    "베이직":    { price: 128, desc: "강마루 기본 시공 · 합지 도배 · PET 상판 주방 · 기본 위생기구·조명", floor: 1200 },
+    "시그니처":  { price: 162, desc: "프리미엄 강마루 · 실크 도배 · 인조대리석 상판 · 3연동 중문", floor: 1600 },
+    "프레스티지": { price: 244, desc: "원목마루 · 친환경 인증 도배 · 엔지니어드스톤 상판 · 맞춤 제작 중문", floor: 2400 },
   };
 
   const QUOTE_ITEMS = [
@@ -664,17 +802,45 @@
     { name: "부자재",         pct: 0.05, spec: { "베이직":"표준", "시그니처":"표준", "프레스티지":"표준" } },
   ];
 
+  // 부분시공 항목별 단가 (엑셀 v4 기준)
+  const PARTIAL_ITEMS = [
+    { key:"wallpaper", label:"도배",   unit:"평당",  qtyType:"pyeong", defaultQty:20, floor:45,
+      tiers:{ "베이직":{price:6.5, spec:"합지"}, "시그니처":{price:9.8, spec:"실크"}, "프레스티지":{price:11.6, spec:"인증마크 실크"} } },
+    { key:"floor",     label:"바닥재", unit:"평당",  qtyType:"pyeong", defaultQty:20, floor:45,
+      tiers:{ "베이직":{price:10.4, spec:"장판"}, "시그니처":{price:19.2, spec:"강마루"}, "프레스티지":{price:23.9, spec:"원목마루"} } },
+    { key:"bathroom",  label:"화장실", unit:"개당",  qtyType:"count",  defaultQty:1,  floor:0,
+      tiers:{ "베이직":{price:350, spec:"덧방 기본"}, "시그니처":{price:447, spec:"덧방+수납장"}, "프레스티지":{price:650, spec:"올철거"} } },
+    { key:"kitchen",   label:"주방",   unit:"단일가", qtyType:"flat",  defaultQty:1,  floor:0,
+      tiers:{ "베이직":{price:710, spec:"PET상판 전체교체"}, "시그니처":{price:800, spec:"인조대리석 전체교체"}, "프레스티지":{price:935, spec:"엔지니어드스톤 전체교체"} } },
+    { key:"door",      label:"중문",   unit:"단일가", qtyType:"flat",  defaultQty:1,  floor:0,
+      tiers:{ "베이직":{price:79, spec:"기존교체 슬라이딩"}, "시그니처":{price:122, spec:"3연동"}, "프레스티지":{price:235, spec:"맞춤제작"} } },
+  ];
+  let partialSelected = {}; // { wallpaper: {checked:true, tier:'베이직', qty:20}, ... }
+
+  // ---------------- 공통 모달 유틸 ----------------
+  function openOverlay(id){ document.getElementById(id).classList.add('open'); }
+  function closeOverlay(id){ document.getElementById(id).classList.remove('open'); }
+
   function openModal(){ document.getElementById('spaceModal').classList.add('open'); goStep1(); }
+  function openCommercialModal(){
+    document.getElementById('spaceModal').classList.remove('open');
+    openOverlay('commercialModal');
+  }
   function askClose(){ document.getElementById('confirmModal').classList.add('open'); }
   function closeConfirm(){ document.getElementById('confirmModal').classList.remove('open'); }
   function forceClose(){
     closeConfirm();
     document.getElementById('spaceModal').classList.remove('open');
   }
+
   function selectOpt(el){
-    // STEP1(공간유형) 버튼끼리만 선택 상태를 주고받음 — 등급 버튼과 섞이지 않게 범위 한정
-    el.closest('.modal-card').querySelectorAll('.modal-opt:not(.tier-opt)').forEach(o=>o.classList.remove('selected'));
+    el.closest('.modal-card').querySelectorAll('.modal-opt:not(.tier-opt):not(.mode-opt):not(.mkt-type-opt)').forEach(o=>o.classList.remove('selected'));
     el.classList.add('selected');
+  }
+  function selectMode(el){
+    document.querySelectorAll('.mode-opt').forEach(o=>o.classList.remove('selected'));
+    el.classList.add('selected');
+    constructionMode = el.dataset.mode;
   }
   function selectTier(el){
     document.querySelectorAll('.tier-opt').forEach(o=>o.classList.remove('selected'));
@@ -682,20 +848,80 @@
     selectedTier = el.dataset.tier;
     document.getElementById('tierDesc').innerText = TIER_DATA[selectedTier].desc;
   }
+  function selectMktType(el){
+    document.querySelectorAll('.mkt-type-opt').forEach(o=>o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedMktType = el.dataset.type;
+  }
+
   function showStep(n){
-    document.getElementById('modalStep1').style.display = n===1 ? 'block' : 'none';
-    document.getElementById('modalStep2').style.display = n===2 ? 'block' : 'none';
-    document.getElementById('modalStep3').style.display = n===3 ? 'block' : 'none';
-    document.getElementById('modalStep4').style.display = n===4 ? 'block' : 'none';
-    document.getElementById('modalStep5').style.display = n===5 ? 'block' : 'none';
+    ["modalStep1","modalStep1B","modalStep2","modalStep2Partial","modalStep3","modalStep4","modalStep5"].forEach((id,i)=>{
+      document.getElementById(id).style.display = (i+1===n) ? 'block' : 'none';
+    });
   }
   function goStep1(){ showStep(1); }
-  function goStep2(){ showStep(2); }
-  function goStep4(){ showStep(4); }
+  function goStep1B(){ showStep(2); }
+  function goStep2(){ showStep(3); }
+  function goStep2Partial(){ renderPartialItems(); showStep(4); }
+  function goStep2FromMode(){
+    if (constructionMode === "full") { goStep2(); } else { goStep2Partial(); }
+  }
+  function goStep4(){ showStep(6); }
+
+  // ---------------- 부분시공 항목 렌더링 ----------------
+  function renderPartialItems(){
+    const container = document.getElementById('partialItemsContainer');
+    container.innerHTML = PARTIAL_ITEMS.map(item => {
+      const state = partialSelected[item.key] || { checked:false, tier:"시그니처", qty:item.defaultQty };
+      partialSelected[item.key] = state;
+      const qtyLabel = item.qtyType === "pyeong" ? "평" : (item.qtyType === "count" ? "개" : "");
+      const qtyInputHtml = item.qtyType !== "flat"
+        ? '<input type="number" value="'+state.qty+'" onchange="updatePartialQty(\''+item.key+'\', this.value)" style="width:60px; padding:8px; border:1px solid var(--line); border-radius:8px; font-size:12px; text-align:center;"> ' + qtyLabel
+        : '<span style="font-size:11.5px; color:var(--gray);">단일가</span>';
+      const tierPillsHtml = ["베이직","시그니처","프레스티지"].map(t =>
+        '<div onclick="updatePartialTier(\''+item.key+'\',\''+t+'\')" style="flex:1; text-align:center; padding:7px 0; border-radius:8px; font-size:11.5px; font-weight:700; cursor:pointer; border:1.5px solid '+(state.tier===t?'var(--gold)':'var(--line)')+'; background:'+(state.tier===t?'var(--gold-light)':'var(--cream)')+'; color:'+(state.tier===t?'var(--gold-deep)':'var(--charcoal)')+';">'+t+'</div>'
+      ).join('');
+
+      return '<div style="border:1.5px solid '+(state.checked?'var(--gold)':'var(--line)')+'; border-radius:14px; padding:14px 16px; background:'+(state.checked?'var(--gold-light)':'#fff')+';">' +
+        '<label style="display:flex; align-items:center; justify-content:space-between; cursor:pointer;">' +
+          '<span style="font-weight:800; font-size:14.5px;"><input type="checkbox" '+(state.checked?'checked':'')+' onchange="togglePartialItem(\''+item.key+'\', this.checked)" style="margin-right:8px;">'+item.label+'</span>' +
+          '<span style="font-size:11px; color:var(--gray);">'+item.unit+'</span>' +
+        '</label>' +
+        (state.checked ? (
+          '<div style="display:flex; gap:6px; margin-top:10px;">' + tierPillsHtml + '</div>' +
+          '<div style="margin-top:10px; display:flex; align-items:center; gap:8px;">' + qtyInputHtml + '</div>'
+        ) : '') +
+      '</div>';
+    }).join('');
+  }
+  function togglePartialItem(key, checked){ partialSelected[key].checked = checked; renderPartialItems(); }
+  function updatePartialTier(key, tier){ partialSelected[key].tier = tier; renderPartialItems(); }
+  function updatePartialQty(key, qty){ partialSelected[key].qty = parseFloat(qty) || 0; }
+
+  function stepVal(key, delta){
+    counts[key] = Math.max(0, counts[key] + delta);
+    document.getElementById(key+'Val').innerText = counts[key];
+  }
+
+  // ---------------- STEP3: 견적서 렌더링 (전체시공 / 부분시공 분기) ----------------
   function goStep3(){
+    if (constructionMode === "full") {
+      renderFullQuote();
+    } else {
+      renderPartialQuote();
+    }
+    showStep(5);
+  }
+
+  function renderFullQuote(){
     const pyeong = parseFloat(document.getElementById('pyeongInput').value) || 30;
     const tier = TIER_DATA[selectedTier];
-    const total = Math.round(pyeong * tier.price);
+    let total = Math.round(pyeong * tier.price);
+    let floorNote = "";
+    if (total < tier.floor) {
+      total = tier.floor;
+      floorNote = '<div style="font-size:11px; color:var(--gold-deep); margin-top:6px;">※ 소형 평수 최소견적(' + tier.floor.toLocaleString() + '만원)이 적용되었습니다.</div>';
+    }
 
     document.getElementById('resultTier').innerText = selectedTier;
     document.getElementById('resultPyeong').innerText = pyeong;
@@ -703,35 +929,60 @@
     document.getElementById('resultBaths').innerText = counts.bath;
     document.getElementById('resultPrice').innerText = total.toLocaleString() + '만원';
 
-    // 항목별 견적 내역 렌더링 (총액을 공정별 비중으로 배분)
     let allocated = 0;
     const rowsHtml = QUOTE_ITEMS.map((item, idx) => {
       let amount;
-      if (idx === QUOTE_ITEMS.length - 1) {
-        amount = total - allocated; // 마지막 항목은 반올림 오차 보정
-      } else {
-        amount = Math.round(total * item.pct);
-        allocated += amount;
-      }
-      return '<div style="display:grid; grid-template-columns:1.3fr 1.7fr 1fr; padding:9px 16px; font-size:12.5px; border-top:1px solid var(--line);">' +
-        '<div style="font-weight:700;">' + item.name + '</div>' +
-        '<div style="color:var(--gray);">' + item.spec[selectedTier] + '</div>' +
-        '<div style="text-align:right;">' + amount.toLocaleString() + '만원</div>' +
-      '</div>';
+      if (idx === QUOTE_ITEMS.length - 1) { amount = total - allocated; }
+      else { amount = Math.round(total * item.pct); allocated += amount; }
+      return quoteRowHtml(item.name, item.spec[selectedTier], amount);
     }).join('');
+    document.getElementById('quoteRows').innerHTML = rowsHtml + floorNote;
+    document.getElementById('quoteTotal').innerText = total.toLocaleString() + '만원';
+  }
+
+  function renderPartialQuote(){
+    const selectedKeys = Object.keys(partialSelected).filter(k => partialSelected[k].checked);
+    let total = 0;
+    let rowsHtml = "";
+    let floorNoteShown = false;
+
+    if (selectedKeys.length === 0) {
+      rowsHtml = '<div style="padding:16px; text-align:center; color:var(--gray); font-size:13px;">선택된 항목이 없어요. 이전 화면에서 항목을 선택해주세요.</div>';
+    } else {
+      selectedKeys.forEach(key => {
+        const item = PARTIAL_ITEMS.find(i => i.key === key);
+        const state = partialSelected[key];
+        const unitInfo = item.tiers[state.tier];
+        let amount = item.qtyType === "flat" ? unitInfo.price : Math.round(unitInfo.price * state.qty);
+        let note = "";
+        if (item.floor && amount < item.floor) {
+          amount = item.floor;
+          note = ' <span style="color:var(--gold-deep);">(최소견적 적용)</span>';
+        }
+        total += amount;
+        const qtyLabel = item.qtyType === "pyeong" ? (state.qty + "평 · ") : (item.qtyType === "count" ? (state.qty + "개 · ") : "");
+        rowsHtml += quoteRowHtml(item.label, qtyLabel + unitInfo.spec + note, amount);
+      });
+    }
+
+    document.getElementById('resultTier').innerText = "부분시공";
+    document.getElementById('resultPyeong').innerText = selectedKeys.length + "개 항목";
+    document.getElementById('resultRooms').innerText = "-";
+    document.getElementById('resultBaths').innerText = "-";
+    document.getElementById('resultPrice').innerText = total.toLocaleString() + '만원';
     document.getElementById('quoteRows').innerHTML = rowsHtml;
     document.getElementById('quoteTotal').innerText = total.toLocaleString() + '만원';
-
-    showStep(3);
-  }
-  function stepVal(key, delta){
-    counts[key] = Math.max(0, counts[key] + delta);
-    document.getElementById(key+'Val').innerText = counts[key];
   }
 
-  // ---- 실제 GAS 백엔드 연동 (배포된 웹앱 URL) ----
-  const GAS_URL = "https://script.google.com/macros/s/AKfycby-PcLPoP8f31-4s2FrbO1Q3spTkFCWCXAxeBqMkYcjPgm1kzYODlq5JpUTJi5CGHua/exec";
+  function quoteRowHtml(name, spec, amount){
+    return '<div style="display:grid; grid-template-columns:1.3fr 1.7fr 1fr; padding:9px 16px; font-size:12.5px; border-top:1px solid var(--line);">' +
+      '<div style="font-weight:700;">' + name + '</div>' +
+      '<div style="color:var(--gray);">' + spec + '</div>' +
+      '<div style="text-align:right;">' + amount.toLocaleString() + '만원</div>' +
+    '</div>';
+  }
 
+  // ---------------- 주거용 세부견적 신청 ----------------
   async function submitEstimate(){
     const name = document.getElementById('nameInput').value.trim();
     const phone = document.getElementById('phoneInput').value.trim();
@@ -740,30 +991,20 @@
     const visitTime = document.getElementById('visitTimeInput').value;
     const agreed = document.getElementById('agreeCheck').checked;
 
-    if (!name || !phone || !address) {
-      alert("이름·연락처·주소는 필수 입력이에요.");
-      return;
-    }
-    if (!agreed) {
-      alert("개인정보 수집·이용에 동의해주셔야 상담 신청이 가능해요.");
-      return;
-    }
+    if (!name || !phone || !address) { alert("이름·연락처·주소는 필수 입력이에요."); return; }
+    if (!agreed) { alert("개인정보 수집·이용에 동의해주셔야 상담 신청이 가능해요."); return; }
 
     const btn = document.getElementById('submitBtn');
-    btn.innerText = "전송 중...";
-    btn.disabled = true;
+    btn.innerText = "전송 중..."; btn.disabled = true;
 
     const spaceTypeEl = document.querySelector('#modalStep1 .modal-opt.selected');
     const payload = {
-      name: name,
-      phone: phone,
-      address: address,
+      name, phone, address,
       spaceType: spaceTypeEl ? spaceTypeEl.innerText : "",
-      pyeong: document.getElementById('pyeongInput').value,
-      rooms: counts.room,
-      baths: counts.bath,
-      balconies: counts.balc,
-      tier: selectedTier,
+      constructionMode: constructionMode,
+      pyeong: constructionMode === "full" ? document.getElementById('pyeongInput').value : "",
+      rooms: counts.room, baths: counts.bath, balconies: counts.balc,
+      tier: constructionMode === "full" ? selectedTier : Object.keys(partialSelected).filter(k=>partialSelected[k].checked).map(k=>k+":"+partialSelected[k].tier).join(", "),
       estimatePrice: document.getElementById('resultPrice').innerText,
       visitDateTime: (visitDate || "") + " " + (visitTime || ""),
       interestedOptions: [],
@@ -771,30 +1012,97 @@
     };
 
     try {
-      const res = await fetch(GAS_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ type: "estimate", data: payload }),
-      });
+      const res = await fetch(GAS_URL, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify({ type:"estimate", data: payload }) });
       const json = await res.json();
       if (json.ok) {
-        document.getElementById('completeSub').innerHTML =
-          name + "님, 신청 감사해요.<br>" +
-          (visitDate ? (visitDate + " " + visitTime + " 방문 희망일정으로 ") : "") +
-          "곧 담당자가 연락드릴게요.";
-        showStep(5);
-      } else {
-        console.error(json.error);
-        alert("죄송해요, 잠시 후 다시 시도해주세요.");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("네트워크 오류가 발생했어요. 다시 시도해주세요.");
-    } finally {
-      btn.innerText = "상담 신청 완료하기";
-      btn.disabled = false;
-    }
+        document.getElementById('completeSub').innerHTML = name + "님, 신청 감사해요.<br>" + (visitDate ? (visitDate + " " + visitTime + " 방문 희망일정으로 ") : "") + "곧 담당자가 연락드릴게요.";
+        showStep(7);
+      } else { alert("죄송해요, 잠시 후 다시 시도해주세요."); }
+    } catch (err) { alert("네트워크 오류가 발생했어요. 다시 시도해주세요."); }
+    finally { btn.innerText = "상담 신청 완료하기"; btn.disabled = false; }
   }
+
+  // ---------------- 상업공간 견적신청 ----------------
+  async function submitCommercial(){
+    const bizType = document.getElementById('comBizType').value.trim();
+    const address = document.getElementById('comAddress').value.trim();
+    const pyeong = document.getElementById('comPyeong').value.trim();
+    const phone = document.getElementById('comPhone').value.trim();
+    if (!bizType || !address || !phone) { alert("업태·주소·연락처는 필수 입력이에요."); return; }
+
+    const btn = document.getElementById('comSubmitBtn');
+    btn.innerText = "전송 중..."; btn.disabled = true;
+    const payload = {
+      businessType: bizType, address, pyeong, phone,
+      visitDateTime: (document.getElementById('comDate').value || "") + " " + (document.getElementById('comTime').value || ""),
+    };
+    try {
+      const res = await fetch(GAS_URL, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify({ type:"commercial", data: payload }) });
+      const json = await res.json();
+      if (json.ok) {
+        document.getElementById('commercialStep1').style.display = 'none';
+        document.getElementById('commercialStep2').style.display = 'block';
+      } else { alert("죄송해요, 잠시 후 다시 시도해주세요."); }
+    } catch (err) { alert("네트워크 오류가 발생했어요."); }
+    finally { btn.innerText = "견적 요청하기"; btn.disabled = false; }
+  }
+
+  // ---------------- 협력사 등록 ----------------
+  async function submitCraftsman(){
+    const companyName = document.getElementById('craCompanyName').value.trim();
+    const bizNumber = document.getElementById('craBizNumber').value.trim();
+    const phone = document.getElementById('craPhone').value.trim();
+    if (!companyName || !bizNumber || !phone) { alert("업체명·사업자등록번호·연락처는 필수 입력이에요."); return; }
+
+    const btn = document.getElementById('craSubmitBtn');
+    btn.innerText = "전송 중..."; btn.disabled = true;
+    const payload = {
+      companyName, businessNumber: bizNumber,
+      ceoName: document.getElementById('craCeoName').value.trim(),
+      specialty: document.getElementById('craSpecialty').value,
+      region: document.getElementById('craRegion').value.trim(),
+      years: document.getElementById('craYears').value,
+      portfolioLink: document.getElementById('craPortfolio').value.trim(),
+      phone,
+    };
+    try {
+      const res = await fetch(GAS_URL, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify({ type:"craftsman", data: payload }) });
+      const json = await res.json();
+      if (json.ok) {
+        document.getElementById('craftsmanStep1').style.display = 'none';
+        document.getElementById('craftsmanStep2').style.display = 'block';
+      } else { alert("죄송해요, 잠시 후 다시 시도해주세요."); }
+    } catch (err) { alert("네트워크 오류가 발생했어요."); }
+    finally { btn.innerText = "등록 신청하기"; btn.disabled = false; }
+  }
+
+  // ---------------- 마케터제휴 신청 ----------------
+  async function submitMarketer(){
+    const channelName = document.getElementById('mktChannelName').value.trim();
+    const managerName = document.getElementById('mktManagerName').value.trim();
+    const phone = document.getElementById('mktPhone').value.trim();
+    if (!channelName || !managerName || !phone) { alert("채널명·담당자명·연락처는 필수 입력이에요."); return; }
+
+    const btn = document.getElementById('mktSubmitBtn');
+    btn.innerText = "전송 중..."; btn.disabled = true;
+    const payload = {
+      type: selectedMktType,
+      companyName: document.getElementById('mktCompanyName').value.trim(),
+      channelName, managerName, phone,
+      businessNumber: document.getElementById('mktBizNumber').value.trim(),
+    };
+    try {
+      const res = await fetch(GAS_URL, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify({ type:"marketer", data: payload }) });
+      const json = await res.json();
+      if (json.ok) {
+        document.getElementById('mktCodePreview').innerText = json.result && json.result.code ? ("발급코드: " + json.result.code) : "";
+        document.getElementById('marketerStep1').style.display = 'none';
+        document.getElementById('marketerStep2').style.display = 'block';
+      } else { alert("죄송해요, 잠시 후 다시 시도해주세요."); }
+    } catch (err) { alert("네트워크 오류가 발생했어요."); }
+    finally { btn.innerText = "제휴 신청하기"; btn.disabled = false; }
+  }
+
   document.querySelectorAll('.btn-primary, .cta-btn').forEach(btn=>{
     btn.addEventListener('click', openModal);
   });
