@@ -159,6 +159,18 @@
   }
   .demo-sub{text-align:center; font-size:12px; color:var(--gray); margin-top:12px;}
 
+  /* STEPPER */
+  .stepper-row{display:flex; flex-direction:column; gap:10px;}
+  .stepper-item{display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:var(--cream); border-radius:12px;}
+  .stepper-label{font-size:13.5px; font-weight:600; color:var(--charcoal);}
+  .stepper-control{display:flex; align-items:center; gap:16px;}
+  .stepper-control button{
+    width:30px; height:30px; border-radius:50%; border:1.5px solid var(--gold); background:#fff; color:var(--gold-deep);
+    font-size:16px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .stepper-control button:hover{background:var(--gold); color:#fff;}
+  .stepper-control span{font-size:15px; font-weight:700; min-width:18px; text-align:center;}
+
   /* ---------- FOOTER ---------- */
   footer{background:var(--charcoal); color:#C9C5BC; padding:60px 48px 32px;}
   .footer-inner{max-width:1180px; margin:0 auto;}
@@ -401,8 +413,8 @@
 
 <!-- MODAL POPUP -->
 <div class="modal-overlay" id="spaceModal">
-  <div class="modal-card">
-    <svg class="modal-icon" viewBox="0 0 200 200" fill="none">
+  <div class="modal-card" id="modalStep1">
+    <svg class="demo-icon" viewBox="0 0 200 200" fill="none" style="width:32px;margin:0 auto 16px;display:block;">
       <path d="M 20,130 C 60,127 96,120 130,103" stroke="#B08B57" stroke-width="14" stroke-linecap="round"/>
       <path d="M 130,103 C 150,90 164,58 180,30 C 192,52 202,74 218,90" stroke="#2B2B2B" stroke-width="14" stroke-linecap="round" fill="none"/>
     </svg>
@@ -414,22 +426,75 @@
       <div class="modal-opt" onclick="selectOpt(this)">오피스텔</div>
     </div>
     <div class="modal-note">상업 공간을 준비 중이신가요? <b>상업공간 견적 알아보기 ›</b></div>
-    <button class="modal-next" onclick="closeModal()">다음</button>
+    <button class="modal-next" onclick="goStep2()">다음</button>
     <span class="modal-close" onclick="closeModal()">나중에 볼게요</span>
+  </div>
+
+  <div class="modal-card" id="modalStep2" style="display:none;">
+    <div class="modal-title">기본 정보를 알려주세요</div>
+    <div style="margin-bottom:16px;">
+      <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">총 평수</label>
+      <input type="number" id="pyeongInput" value="30" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:15px; font-family:inherit;">
+    </div>
+    <div class="stepper-row">
+      <div class="stepper-item"><div class="stepper-label">방 개수</div><div class="stepper-control"><button onclick="stepVal('room',-1)">−</button><span id="roomVal">3</span><button onclick="stepVal('room',1)">+</button></div></div>
+      <div class="stepper-item"><div class="stepper-label">화장실</div><div class="stepper-control"><button onclick="stepVal('bath',-1)">−</button><span id="bathVal">2</span><button onclick="stepVal('bath',1)">+</button></div></div>
+      <div class="stepper-item"><div class="stepper-label">발코니</div><div class="stepper-control"><button onclick="stepVal('balc',-1)">−</button><span id="balcVal">2</span><button onclick="stepVal('balc',1)">+</button></div></div>
+    </div>
+    <button class="modal-next" onclick="goStep3()" style="margin-top:20px;">견적 확인하기</button>
+    <span class="modal-close" onclick="goStep1()">← 이전으로</span>
+  </div>
+
+  <div class="modal-card" id="modalStep3" style="display:none;">
+    <div class="demo-top" style="padding:0 0 20px;">
+      <div class="demo-title">예상 견적 결과</div>
+    </div>
+    <div class="demo-price-box">
+      <div class="demo-price-label">시그니처 · <span id="resultPyeong">30</span>평 기준</div>
+      <div class="demo-price" id="resultPrice">4,860만원</div>
+    </div>
+    <div class="demo-img"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop" alt="result"></div>
+    <ul class="demo-list">
+      <li>프리미엄 강마루 · 실크 도배</li>
+      <li>인조대리석 상판 · 3연동 중문</li>
+      <li>철거비 포함, 방문 실측 후 확정</li>
+    </ul>
+    <button class="demo-btn" onclick="alert('세부견적 신청 폼(연락처+주소+예약)으로 연결됩니다')">카톡으로 견적 저장 + 상담 신청</button>
+    <div class="demo-sub">지금 입력하신 정보가 사라지지 않게 저희가 담아둘게요</div>
+    <span class="modal-close" onclick="goStep2()" style="margin-top:14px;">← 이전으로</span>
   </div>
 </div>
 
 <script>
-  function openModal(){ document.getElementById('spaceModal').classList.add('open'); }
+  let counts = {room:3, bath:2, balc:2};
+  function openModal(){ document.getElementById('spaceModal').classList.add('open'); goStep1(); }
   function closeModal(){ document.getElementById('spaceModal').classList.remove('open'); }
   function selectOpt(el){
     document.querySelectorAll('.modal-opt').forEach(o=>o.classList.remove('selected'));
     el.classList.add('selected');
   }
+  function showStep(n){
+    document.getElementById('modalStep1').style.display = n===1 ? 'block' : 'none';
+    document.getElementById('modalStep2').style.display = n===2 ? 'block' : 'none';
+    document.getElementById('modalStep3').style.display = n===3 ? 'block' : 'none';
+  }
+  function goStep1(){ showStep(1); }
+  function goStep2(){ showStep(2); }
+  function goStep3(){
+    const pyeong = parseFloat(document.getElementById('pyeongInput').value) || 30;
+    const pricePerPyeong = 162; // 시그니처 기준 만원/평
+    const total = Math.round(pyeong * pricePerPyeong);
+    document.getElementById('resultPyeong').innerText = pyeong;
+    document.getElementById('resultPrice').innerText = total.toLocaleString() + '만원';
+    showStep(3);
+  }
+  function stepVal(key, delta){
+    counts[key] = Math.max(0, counts[key] + delta);
+    document.getElementById(key+'Val').innerText = counts[key];
+  }
   document.querySelectorAll('.btn-primary, .cta-btn').forEach(btn=>{
     btn.addEventListener('click', openModal);
   });
-  // 처음 진입 시 자동으로 팝업 노출
   window.addEventListener('load', function(){
     setTimeout(openModal, 600);
   });
