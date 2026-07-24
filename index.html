@@ -533,9 +533,9 @@
     </div>
     <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin:18px 0 8px;">등급 선택</label>
     <div class="modal-grid" id="tierGrid" style="grid-template-columns:1fr 1fr 1fr;">
-      <div class="modal-opt tier-opt" data-tier="베이직" onclick="selectTier(this)">베이직<br><span style="font-size:11px; font-weight:400;">128만원/평</span></div>
-      <div class="modal-opt tier-opt selected" data-tier="시그니처" onclick="selectTier(this)">시그니처<br><span style="font-size:11px; font-weight:400;">162만원/평</span></div>
-      <div class="modal-opt tier-opt" data-tier="프레스티지" onclick="selectTier(this)">프레스티지<br><span style="font-size:11px; font-weight:400;">244만원/평</span></div>
+      <div class="modal-opt tier-opt" data-tier="베이직" onclick="selectTier(this)">베이직</div>
+      <div class="modal-opt tier-opt selected" data-tier="시그니처" onclick="selectTier(this)">시그니처</div>
+      <div class="modal-opt tier-opt" data-tier="프레스티지" onclick="selectTier(this)">프레스티지</div>
     </div>
     <div id="tierDesc" style="background:var(--cream); border-radius:12px; padding:12px 16px; font-size:12px; color:var(--charcoal); line-height:1.7; margin-top:10px;">
       프리미엄 강마루 · 실크 도배 · 인조대리석 상판 · 3연동 중문 · 기본 조명
@@ -544,24 +544,82 @@
     <span class="modal-close" onclick="goStep1()">← 이전으로</span>
   </div>
 
-  <div class="modal-card" id="modalStep3" style="display:none;">
+  <div class="modal-card" id="modalStep3" style="display:none; width:520px; max-height:86vh; overflow-y:auto;">
     <button class="modal-x" onclick="askClose()">✕</button>
-    <div class="demo-top" style="padding:0 0 20px;">
-      <div class="demo-title">예상 견적 결과</div>
+    <div class="demo-top" style="padding:0 0 6px;">
+      <div class="demo-title">예상 견적서</div>
+      <div style="text-align:center; font-size:12px; color:var(--gray);">바른집 (가칭) · 온라인 개산 견적</div>
     </div>
-    <div class="demo-price-box">
-      <div class="demo-price-label"><span id="resultTier">시그니처</span> · <span id="resultPyeong">30</span>평 기준</div>
+    <div class="demo-price-box" style="margin-top:14px;">
+      <div class="demo-price-label"><span id="resultTier">시그니처</span> · <span id="resultPyeong">30</span>평 · 방<span id="resultRooms">3</span>·욕실<span id="resultBaths">2</span> 기준</div>
       <div class="demo-price" id="resultPrice">4,860만원</div>
     </div>
-    <div class="demo-img"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop" alt="result"></div>
-    <ul class="demo-list" id="resultList">
-      <li>프리미엄 강마루 · 실크 도배</li>
-      <li>인조대리석 상판 · 3연동 중문</li>
-      <li>철거비 포함, 방문 실측 후 확정</li>
-    </ul>
-    <button class="demo-btn" onclick="submitEstimate()">카톡으로 견적 저장 + 상담 신청</button>
+
+    <div style="margin-top:18px; border:1px solid var(--line); border-radius:14px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:1.3fr 1.7fr 1fr; background:var(--cream); padding:10px 16px; font-size:11.5px; font-weight:700; color:var(--gray);">
+        <div>공정</div><div>사양</div><div style="text-align:right;">금액</div>
+      </div>
+      <div id="quoteRows"></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; padding:12px 16px; background:var(--gold-light); font-size:13.5px; font-weight:800;">
+        <div>합계</div><div style="text-align:right;" id="quoteTotal">4,860만원</div>
+      </div>
+    </div>
+
+    <div style="font-size:11.5px; color:var(--gray); line-height:1.7; margin-top:12px; padding:12px 14px; background:var(--cream); border-radius:10px;">
+      · 위 견적은 표준 사양·평균 물량 기준 온라인 개산견적입니다.<br>
+      · 철거비가 포함되어 있으며, 정확한 최종 금액은 방문 실측 후 확정됩니다.<br>
+      · 바닥재는 덧방 시공을 기준으로 산정되었습니다.
+    </div>
+
+    <button class="demo-btn" onclick="goStep4()" style="margin-top:16px;">카톡으로 견적 저장 + 상담 신청</button>
     <div class="demo-sub">지금 입력하신 정보가 사라지지 않게 저희가 담아둘게요</div>
     <span class="modal-close" onclick="goStep2()" style="margin-top:14px;">← 이전으로</span>
+  </div>
+
+  <div class="modal-card" id="modalStep4" style="display:none;">
+    <button class="modal-x" onclick="askClose()">✕</button>
+    <div class="modal-title">상담 받으실 정보를 남겨주세요</div>
+    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:20px;">
+      <div>
+        <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">이름</label>
+        <input type="text" id="nameInput" placeholder="홍길동" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:15px; font-family:inherit;">
+      </div>
+      <div>
+        <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">연락처</label>
+        <input type="tel" id="phoneInput" placeholder="010-0000-0000" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:15px; font-family:inherit;">
+      </div>
+      <div>
+        <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">주소</label>
+        <input type="text" id="addressInput" placeholder="시공을 원하시는 주소" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:15px; font-family:inherit;">
+      </div>
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1;">
+          <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">희망 방문일</label>
+          <input type="date" id="visitDateInput" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+        </div>
+        <div style="flex:1;">
+          <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin-bottom:6px;">희망 시간</label>
+          <input type="time" id="visitTimeInput" style="width:100%; padding:14px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+        </div>
+      </div>
+      <label style="display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--gray); margin-top:4px;">
+        <input type="checkbox" id="agreeCheck" style="margin-top:2px;">
+        <span>개인정보 수집·이용에 동의합니다 (상담 및 방문예약 목적, 상담 종료 후 3년간 보관)</span>
+      </label>
+    </div>
+    <button class="modal-next" id="submitBtn" onclick="submitEstimate()">상담 신청 완료하기</button>
+    <span class="modal-close" onclick="goStep3()">← 이전으로</span>
+  </div>
+
+  <div class="modal-card" id="modalStep5" style="display:none;">
+    <div style="text-align:center; padding:20px 0;">
+      <div style="width:56px; height:56px; border-radius:50%; background:var(--sage-light); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:26px; color:var(--sage);">✓</div>
+      <div class="modal-title" style="margin-bottom:12px;">상담 신청이 완료됐어요</div>
+      <div style="font-size:13.5px; color:var(--gray); line-height:1.8; margin-bottom:28px;" id="completeSub">
+        입력하신 연락처로 곧 담당자가 연락드릴게요.<br>희망하신 방문일정도 함께 확인 후 안내드립니다.
+      </div>
+      <button class="modal-next" onclick="forceClose()" style="margin-bottom:0;">확인했어요</button>
+    </div>
   </div>
 </div>
 
@@ -586,6 +644,19 @@
     "프레스티지": { price: 244, desc: "원목마루 · 친환경 인증 도배 · 엔지니어드스톤 상판 · 맞춤 제작 중문" },
   };
 
+  const QUOTE_ITEMS = [
+    { name: "철거·폐기물처리", pct: 0.05, spec: { "베이직":"기존 마감재 철거", "시그니처":"기존 마감재 철거", "프레스티지":"기존 마감재 철거" } },
+    { name: "도배",           pct: 0.08, spec: { "베이직":"합지", "시그니처":"실크", "프레스티지":"친환경 인증" } },
+    { name: "바닥재",         pct: 0.15, spec: { "베이직":"강마루", "시그니처":"프리미엄 강마루", "프레스티지":"원목마루" } },
+    { name: "주방",           pct: 0.20, spec: { "베이직":"PET 상판", "시그니처":"인조대리석 상판", "프레스티지":"엔지니어드스톤 상판" } },
+    { name: "화장실",         pct: 0.15, spec: { "베이직":"기본 타일·도기", "시그니처":"중급 타일·브랜드 도기", "프레스티지":"대형 포세린·프리미엄 도기" } },
+    { name: "중문",           pct: 0.10, spec: { "베이직":"기본 슬라이딩", "시그니처":"3연동", "프레스티지":"맞춤 제작" } },
+    { name: "조명·전기",      pct: 0.07, spec: { "베이직":"기본 조명", "시그니처":"간접조명", "프레스티지":"디자이너 조명" } },
+    { name: "몰딩·도장",      pct: 0.05, spec: { "베이직":"기본", "시그니처":"고급", "프레스티지":"프리미엄" } },
+    { name: "SV 현장관리",    pct: 0.10, spec: { "베이직":"상시 감독", "시그니처":"상시 감독", "프레스티지":"상시 감독" } },
+    { name: "부자재",         pct: 0.05, spec: { "베이직":"표준", "시그니처":"표준", "프레스티지":"표준" } },
+  ];
+
   function openModal(){ document.getElementById('spaceModal').classList.add('open'); goStep1(); }
   function askClose(){ document.getElementById('confirmModal').classList.add('open'); }
   function closeConfirm(){ document.getElementById('confirmModal').classList.remove('open'); }
@@ -608,9 +679,12 @@
     document.getElementById('modalStep1').style.display = n===1 ? 'block' : 'none';
     document.getElementById('modalStep2').style.display = n===2 ? 'block' : 'none';
     document.getElementById('modalStep3').style.display = n===3 ? 'block' : 'none';
+    document.getElementById('modalStep4').style.display = n===4 ? 'block' : 'none';
+    document.getElementById('modalStep5').style.display = n===5 ? 'block' : 'none';
   }
   function goStep1(){ showStep(1); }
   function goStep2(){ showStep(2); }
+  function goStep4(){ showStep(4); }
   function goStep3(){
     const pyeong = parseFloat(document.getElementById('pyeongInput').value) || 30;
     const tier = TIER_DATA[selectedTier];
@@ -618,12 +692,28 @@
 
     document.getElementById('resultTier').innerText = selectedTier;
     document.getElementById('resultPyeong').innerText = pyeong;
+    document.getElementById('resultRooms').innerText = counts.room;
+    document.getElementById('resultBaths').innerText = counts.bath;
     document.getElementById('resultPrice').innerText = total.toLocaleString() + '만원';
 
-    const items = tier.desc.split(' · ');
-    document.getElementById('resultList').innerHTML =
-      items.map(i => '<li>' + i + '</li>').join('') +
-      '<li>철거비 포함, 방문 실측 후 확정</li>';
+    // 항목별 견적 내역 렌더링 (총액을 공정별 비중으로 배분)
+    let allocated = 0;
+    const rowsHtml = QUOTE_ITEMS.map((item, idx) => {
+      let amount;
+      if (idx === QUOTE_ITEMS.length - 1) {
+        amount = total - allocated; // 마지막 항목은 반올림 오차 보정
+      } else {
+        amount = Math.round(total * item.pct);
+        allocated += amount;
+      }
+      return '<div style="display:grid; grid-template-columns:1.3fr 1.7fr 1fr; padding:9px 16px; font-size:12.5px; border-top:1px solid var(--line);">' +
+        '<div style="font-weight:700;">' + item.name + '</div>' +
+        '<div style="color:var(--gray);">' + item.spec[selectedTier] + '</div>' +
+        '<div style="text-align:right;">' + amount.toLocaleString() + '만원</div>' +
+      '</div>';
+    }).join('');
+    document.getElementById('quoteRows').innerHTML = rowsHtml;
+    document.getElementById('quoteTotal').innerText = total.toLocaleString() + '만원';
 
     showStep(3);
   }
@@ -636,8 +726,31 @@
   const GAS_URL = "https://script.google.com/macros/s/AKfycby-PcLPoP8f31-4s2FrbO1Q3spTkFCWCXAxeBqMkYcjPgm1kzYODlq5JpUTJi5CGHua/exec";
 
   async function submitEstimate(){
+    const name = document.getElementById('nameInput').value.trim();
+    const phone = document.getElementById('phoneInput').value.trim();
+    const address = document.getElementById('addressInput').value.trim();
+    const visitDate = document.getElementById('visitDateInput').value;
+    const visitTime = document.getElementById('visitTimeInput').value;
+    const agreed = document.getElementById('agreeCheck').checked;
+
+    if (!name || !phone || !address) {
+      alert("이름·연락처·주소는 필수 입력이에요.");
+      return;
+    }
+    if (!agreed) {
+      alert("개인정보 수집·이용에 동의해주셔야 상담 신청이 가능해요.");
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.innerText = "전송 중...";
+    btn.disabled = true;
+
     const spaceTypeEl = document.querySelector('#modalStep1 .modal-opt.selected');
     const payload = {
+      name: name,
+      phone: phone,
+      address: address,
       spaceType: spaceTypeEl ? spaceTypeEl.innerText : "",
       pyeong: document.getElementById('pyeongInput').value,
       rooms: counts.room,
@@ -645,12 +758,7 @@
       balconies: counts.balc,
       tier: selectedTier,
       estimatePrice: document.getElementById('resultPrice').innerText,
-      // 아래 3개는 아직 이 화면에 입력창이 없어서 비워둡니다.
-      // 세부견적 신청 단계(연락처/주소/방문일시 폼)를 추가로 만들면 그때 채우면 됩니다.
-      name: "",
-      phone: "",
-      address: "",
-      visitDateTime: "",
+      visitDateTime: (visitDate || "") + " " + (visitTime || ""),
       interestedOptions: [],
       referralCode: new URLSearchParams(window.location.search).get("ref") || "",
     };
@@ -663,7 +771,11 @@
       });
       const json = await res.json();
       if (json.ok) {
-        alert("견적이 저장됐어요! 곧 연락드릴게요.");
+        document.getElementById('completeSub').innerHTML =
+          name + "님, 신청 감사해요.<br>" +
+          (visitDate ? (visitDate + " " + visitTime + " 방문 희망일정으로 ") : "") +
+          "곧 담당자가 연락드릴게요.";
+        showStep(5);
       } else {
         console.error(json.error);
         alert("죄송해요, 잠시 후 다시 시도해주세요.");
@@ -671,6 +783,9 @@
     } catch (err) {
       console.error(err);
       alert("네트워크 오류가 발생했어요. 다시 시도해주세요.");
+    } finally {
+      btn.innerText = "상담 신청 완료하기";
+      btn.disabled = false;
     }
   }
   document.querySelectorAll('.btn-primary, .cta-btn').forEach(btn=>{
