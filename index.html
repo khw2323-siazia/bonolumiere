@@ -302,6 +302,64 @@
     </div>
   </div>
 </section>
+<!-- PORTFOLIO / 시공사례 (매거진 스타일, 리듬감 있는 레이아웃) -->
+<section style="padding:0;">
+  <div style="display:grid; grid-template-columns:1.3fr 1fr; height:560px;">
+    <div style="position:relative; overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop" alt="라이프스타일" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+    <div style="background:var(--cream); display:flex; flex-direction:column; justify-content:center; padding:60px;">
+      <div class="eyebrow" style="text-align:left;">JOURNAL · 바른집 저널</div>
+      <div style="font-size:26px; font-weight:800; line-height:1.5; margin-bottom:16px;">"이 정도 가격에,<br>이런 공간이 될 줄 몰랐어요"</div>
+      <div style="font-size:14px; color:var(--gray); line-height:1.8;">시공을 마친 고객들의 이야기를 매거진처럼 기록합니다. 우리는 공간을 넘겨드리는 게 아니라, 그 안에서 시작될 하루를 상상하며 짓습니다.</div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="eyebrow">PORTFOLIO · 시공사례</div>
+    <div class="section-title">완성된 공간들</div>
+    <div class="section-desc">아직 계약 전 사례가 준비 중이며, 아래 이미지는 참고용 무드 컷입니다.</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+      <div style="grid-column:span 2; grid-row:span 2; border-radius:16px; overflow:hidden; aspect-ratio:1/1;">
+        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1200&auto=format&fit=crop" alt="거실" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div style="border-radius:16px; overflow:hidden; aspect-ratio:1/1;">
+        <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=800&auto=format&fit=crop" alt="주방" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div style="border-radius:16px; overflow:hidden; aspect-ratio:1/1;">
+        <img src="https://images.unsplash.com/photo-1615529162924-f8605388461d?q=80&w=800&auto=format&fit=crop" alt="침실" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div style="border-radius:16px; overflow:hidden; aspect-ratio:16/9; grid-column:span 3;">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1600&auto=format&fit=crop" alt="라이프스타일 거실" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 고객후기 -->
+<section style="background:var(--cream);">
+  <div class="section-inner">
+    <div class="eyebrow">VOICE · 고객 후기</div>
+    <div class="section-title">아직 준비 중이지만, 곧 채워질 공간입니다</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <div style="background:#fff; border-radius:16px; padding:32px; border:1px solid var(--line);">
+        <div style="font-size:14px; color:var(--gray); line-height:1.8; margin-bottom:16px;">"첫 계약 고객님의 후기가 이 자리에 담길 예정입니다."</div>
+        <div style="font-size:12px; color:var(--gold-deep); font-weight:700;">— 준비 중</div>
+      </div>
+      <div style="background:#fff; border-radius:16px; padding:32px; border:1px solid var(--line);">
+        <div style="font-size:14px; color:var(--gray); line-height:1.8; margin-bottom:16px;">"바른집과 함께한 이야기, 곧 만나보실 수 있어요."</div>
+        <div style="font-size:12px; color:var(--gold-deep); font-weight:700;">— 준비 중</div>
+      </div>
+      <div style="background:#fff; border-radius:16px; padding:32px; border:1px solid var(--line);">
+        <div style="font-size:14px; color:var(--gray); line-height:1.8; margin-bottom:16px;">"SV 상시감독으로 완성한 공간의 기록이 쌓입니다."</div>
+        <div style="font-size:12px; color:var(--gold-deep); font-weight:700;">— 준비 중</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="tiers">
   <div class="section-inner">
     <div class="eyebrow">SERVICE · 서비스안내</div>
@@ -417,7 +475,7 @@
           <li>인조대리석 상판 · 3연동 중문</li>
           <li>철거비 포함, 방문 실측 후 확정</li>
         </ul>
-       <button class="demo-btn" onclick="submitEstimate()">카톡으로 견적 저장 + 상담 신청</button>
+        <button class="demo-btn">카톡으로 견적 저장 + 상담 신청</button>
         <div class="demo-sub">지금 입력하신 정보가 사라지지 않게 저희가 담아둘게요</div>
       </div>
     </div>
@@ -448,10 +506,7 @@
 <div class="modal-overlay" id="spaceModal">
   <div class="modal-card" id="modalStep1">
     <button class="modal-x" onclick="askClose()">✕</button>
-    <svg class="demo-icon" viewBox="0 0 200 200" fill="none" style="width:32px;margin:0 auto 16px;display:block;">
-      <path d="M 20,130 C 60,127 96,120 130,103" stroke="#B08B57" stroke-width="14" stroke-linecap="round"/>
-      <path d="M 130,103 C 150,90 164,58 180,30 C 192,52 202,74 218,90" stroke="#2B2B2B" stroke-width="14" stroke-linecap="round" fill="none"/>
-    </svg>
+    <div style="text-align:center; font-family:Georgia,'Noto Serif KR',serif; font-weight:400; letter-spacing:5px; font-size:16px; color:var(--charcoal); margin-bottom:16px;">바른집</div>
     <div class="modal-title">어떤 공간을 인테리어 하실 건가요?</div>
     <div class="modal-grid">
       <div class="modal-opt selected" onclick="selectOpt(this)">아파트</div>
@@ -476,6 +531,15 @@
       <div class="stepper-item"><div class="stepper-label">화장실</div><div class="stepper-control"><button onclick="stepVal('bath',-1)">−</button><span id="bathVal">2</span><button onclick="stepVal('bath',1)">+</button></div></div>
       <div class="stepper-item"><div class="stepper-label">발코니</div><div class="stepper-control"><button onclick="stepVal('balc',-1)">−</button><span id="balcVal">2</span><button onclick="stepVal('balc',1)">+</button></div></div>
     </div>
+    <label style="font-size:12.5px; color:var(--gray); font-weight:600; display:block; margin:18px 0 8px;">등급 선택</label>
+    <div class="modal-grid" id="tierGrid" style="grid-template-columns:1fr 1fr 1fr;">
+      <div class="modal-opt tier-opt" data-tier="베이직" onclick="selectTier(this)">베이직<br><span style="font-size:11px; font-weight:400;">128만원/평</span></div>
+      <div class="modal-opt tier-opt selected" data-tier="시그니처" onclick="selectTier(this)">시그니처<br><span style="font-size:11px; font-weight:400;">162만원/평</span></div>
+      <div class="modal-opt tier-opt" data-tier="프레스티지" onclick="selectTier(this)">프레스티지<br><span style="font-size:11px; font-weight:400;">244만원/평</span></div>
+    </div>
+    <div id="tierDesc" style="background:var(--cream); border-radius:12px; padding:12px 16px; font-size:12px; color:var(--charcoal); line-height:1.7; margin-top:10px;">
+      프리미엄 강마루 · 실크 도배 · 인조대리석 상판 · 3연동 중문 · 기본 조명
+    </div>
     <button class="modal-next" onclick="goStep3()" style="margin-top:20px;">견적 확인하기</button>
     <span class="modal-close" onclick="goStep1()">← 이전으로</span>
   </div>
@@ -486,16 +550,16 @@
       <div class="demo-title">예상 견적 결과</div>
     </div>
     <div class="demo-price-box">
-      <div class="demo-price-label">시그니처 · <span id="resultPyeong">30</span>평 기준</div>
+      <div class="demo-price-label"><span id="resultTier">시그니처</span> · <span id="resultPyeong">30</span>평 기준</div>
       <div class="demo-price" id="resultPrice">4,860만원</div>
     </div>
     <div class="demo-img"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop" alt="result"></div>
-    <ul class="demo-list">
+    <ul class="demo-list" id="resultList">
       <li>프리미엄 강마루 · 실크 도배</li>
       <li>인조대리석 상판 · 3연동 중문</li>
       <li>철거비 포함, 방문 실측 후 확정</li>
     </ul>
-    <button class="demo-btn" onclick="alert('세부견적 신청 폼(연락처+주소+예약)으로 연결됩니다')">카톡으로 견적 저장 + 상담 신청</button>
+    <button class="demo-btn" onclick="submitEstimate()">카톡으로 견적 저장 + 상담 신청</button>
     <div class="demo-sub">지금 입력하신 정보가 사라지지 않게 저희가 담아둘게요</div>
     <span class="modal-close" onclick="goStep2()" style="margin-top:14px;">← 이전으로</span>
   </div>
@@ -514,6 +578,14 @@
 
 <script>
   let counts = {room:3, bath:2, balc:2};
+  let selectedTier = "시그니처";
+
+  const TIER_DATA = {
+    "베이직":    { price: 128, desc: "강마루 기본 시공 · 합지 도배 · PET 상판 주방 · 기본 위생기구·조명" },
+    "시그니처":  { price: 162, desc: "프리미엄 강마루 · 실크 도배 · 인조대리석 상판 · 3연동 중문" },
+    "프레스티지": { price: 244, desc: "원목마루 · 친환경 인증 도배 · 엔지니어드스톤 상판 · 맞춤 제작 중문" },
+  };
+
   function openModal(){ document.getElementById('spaceModal').classList.add('open'); goStep1(); }
   function askClose(){ document.getElementById('confirmModal').classList.add('open'); }
   function closeConfirm(){ document.getElementById('confirmModal').classList.remove('open'); }
@@ -522,8 +594,15 @@
     document.getElementById('spaceModal').classList.remove('open');
   }
   function selectOpt(el){
-    document.querySelectorAll('.modal-opt').forEach(o=>o.classList.remove('selected'));
+    // STEP1(공간유형) 버튼끼리만 선택 상태를 주고받음 — 등급 버튼과 섞이지 않게 범위 한정
+    el.closest('.modal-card').querySelectorAll('.modal-opt:not(.tier-opt)').forEach(o=>o.classList.remove('selected'));
     el.classList.add('selected');
+  }
+  function selectTier(el){
+    document.querySelectorAll('.tier-opt').forEach(o=>o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedTier = el.dataset.tier;
+    document.getElementById('tierDesc').innerText = TIER_DATA[selectedTier].desc;
   }
   function showStep(n){
     document.getElementById('modalStep1').style.display = n===1 ? 'block' : 'none';
@@ -534,15 +613,33 @@
   function goStep2(){ showStep(2); }
   function goStep3(){
     const pyeong = parseFloat(document.getElementById('pyeongInput').value) || 30;
-    const pricePerPyeong = 162; // 시그니처 기준 만원/평
-    const total = Math.round(pyeong * pricePerPyeong);
+    const tier = TIER_DATA[selectedTier];
+    const total = Math.round(pyeong * tier.price);
+
+    document.getElementById('resultTier').innerText = selectedTier;
     document.getElementById('resultPyeong').innerText = pyeong;
     document.getElementById('resultPrice').innerText = total.toLocaleString() + '만원';
+
+    const items = tier.desc.split(' · ');
+    document.getElementById('resultList').innerHTML =
+      items.map(i => '<li>' + i + '</li>').join('') +
+      '<li>철거비 포함, 방문 실측 후 확정</li>';
+
     showStep(3);
   }
   function stepVal(key, delta){
     counts[key] = Math.max(0, counts[key] + delta);
     document.getElementById(key+'Val').innerText = counts[key];
+  }
+  // 이 로컬 프로토타입용 데모 함수 — 실제 GAS 연동은 형님의 GitHub 사이트 파일에 이미 넣으신 버전을 사용하세요.
+  function submitEstimate(){
+    alert(
+      "[데모] 아래 데이터가 GAS로 전송됩니다:\n\n" +
+      "공간유형: " + document.querySelector('#modalStep1 .modal-opt.selected').innerText + "\n" +
+      "평수: " + document.getElementById('pyeongInput').value + "\n" +
+      "등급: " + selectedTier + "\n" +
+      "예상견적: " + document.getElementById('resultPrice').innerText
+    );
   }
   document.querySelectorAll('.btn-primary, .cta-btn').forEach(btn=>{
     btn.addEventListener('click', openModal);
@@ -550,97 +647,6 @@
   window.addEventListener('load', function(){
     setTimeout(openModal, 600);
   });
-</script>
-<!--
-  바른집 프론트엔드 ↔ GAS 연동 가이드
-  ------------------------------------------------------
-  1. Code.gs를 배포하고 나온 웹앱 URL을 아래 GAS_URL에 붙여넣으세요.
-  2. 각 폼 제출 시 submitToGAS(type, data)를 호출하면 됩니다.
-  3. 지금 프로토타입(index.html)의 "카톡으로 견적 저장 + 상담 신청" 버튼에
-     이 함수를 연결하면 실제로 시트에 저장되고 메일이 갑니다.
-------------------------------------------------------- -->
-<script>
-  // 배포된 실제 웹앱 URL
-  const GAS_URL = "https://script.google.com/macros/s/AKfycby-PcLPoP8f31-4s2FrbO1Q3spTkFCWCXAxeBqMkYcjPgm1kzYODlq5JpUTJi5CGHua/exec";
-
-  async function submitToGAS(type, data) {
-    try {
-      const res = await fetch(GAS_URL, {
-        method: "POST",
-        // GAS 웹앱은 CORS 프리플라이트를 지원하지 않아, text/plain으로 보내야 합니다.
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ type: type, data: data }),
-      });
-      const json = await res.json();
-      if (json.ok) {
-        console.log("저장 성공:", json.result);
-        return json.result;
-      } else {
-        console.error("저장 실패:", json.error);
-        alert("죄송해요, 잠시 후 다시 시도해주세요.");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("네트워크 오류가 발생했어요. 다시 시도해주세요.");
-    }
-  }
-
-  // ---- 사용 예시 1: 주거용 세부견적 신청 ----
-  // goStep3()에서 계산한 값들을 모아서 이렇게 호출하면 됩니다.
-  function submitEstimate() {
-    submitToGAS("estimate", {
-      name: document.getElementById("nameInput").value,
-      phone: document.getElementById("phoneInput").value,
-      address: document.getElementById("addressInput").value,
-      spaceType: document.querySelector(".modal-opt.selected").innerText,
-      pyeong: document.getElementById("pyeongInput").value,
-      rooms: counts.room,
-      baths: counts.bath,
-      balconies: counts.balc,
-      tier: "시그니처", // 등급 선택 버튼 만들면 그 값으로 교체
-      estimatePrice: document.getElementById("resultPrice").innerText,
-      visitDateTime: document.getElementById("visitDateInput").value,
-      interestedOptions: [], // 관심옵션 체크박스 값들의 배열
-      referralCode: new URLSearchParams(window.location.search).get("ref") || "",
-    });
-  }
-
-  // ---- 사용 예시 2: 상업공간 견적신청 ----
-  function submitCommercial() {
-    submitToGAS("commercial", {
-      businessType: document.getElementById("bizTypeInput").value,
-      address: document.getElementById("comAddressInput").value,
-      pyeong: document.getElementById("comPyeongInput").value,
-      phone: document.getElementById("comPhoneInput").value,
-      visitDateTime: document.getElementById("comDateInput").value,
-    });
-  }
-
-  // ---- 사용 예시 3: 협력사 등록 ----
-  function submitCraftsman() {
-    submitToGAS("craftsman", {
-      companyName: document.getElementById("companyNameInput").value,
-      businessNumber: document.getElementById("bizNumberInput").value,
-      ceoName: document.getElementById("ceoNameInput").value,
-      specialty: document.getElementById("specialtyInput").value,
-      region: document.getElementById("regionInput").value,
-      years: document.getElementById("yearsInput").value,
-      portfolioLink: document.getElementById("portfolioInput").value,
-      phone: document.getElementById("craftsmanPhoneInput").value,
-    });
-  }
-
-  // ---- 사용 예시 4: 마케터제휴 신청 ----
-  function submitMarketer() {
-    submitToGAS("marketer", {
-      type: document.getElementById("marketerTypeInput").value, // "유튜버" or "공인중개사"
-      companyName: document.getElementById("marketerCompanyInput").value,
-      channelName: document.getElementById("channelNameInput").value,
-      managerName: document.getElementById("managerNameInput").value,
-      phone: document.getElementById("marketerPhoneInput").value,
-      businessNumber: document.getElementById("marketerBizNumberInput").value,
-    });
-  }
 </script>
 
 </body>
