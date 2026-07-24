@@ -3,499 +3,437 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BONO LUMIÈRE DESIGN</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<title>바른집 (가칭) — 공간을 짓기 전에, 기준을 짓습니다</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
---charcoal:#3A3835;--charcoal-deep:#2D2B28;--gold:#C9A84C;--gold-light:#E2C97E;--gold-pale:#F0E4C0;
---cream:#F7F2EA;--cream-dark:#EDE7D9;--cream-mid:#F2EDE3;--white:#FFFFFF;
---text-dark:#2D2B28;--text-mid:#6B6660;--text-light:#9B9490;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden}
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
 
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
-.fade-up.visible{opacity:1;transform:translateY(0);}
-.fade-up.delay-1{transition-delay:0.1s;}
-.fade-up.delay-2{transition-delay:0.2s;}
-.fade-up.delay-3{transition-delay:0.3s;}
-.fade-up.delay-4{transition-delay:0.4s;}
-.fade-up.delay-5{transition-delay:0.5s;}
+  :root{
+    --cream:#FAF9F6;
+    --white:#FFFFFF;
+    --charcoal:#2B2B2B;
+    --gold:#B08B57;
+    --gold-deep:#8C6D3F;
+    --gold-light:#F0E6D2;
+    --sage:#7A9B76;
+    --sage-light:#E8EFE5;
+    --line:#EAE6DC;
+    --gray:#6F6B63;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Pretendard', -apple-system, sans-serif; color:var(--charcoal); background:var(--white); line-height:1.5;}
+  img{width:100%; height:100%; object-fit:cover; display:block;}
+  a{text-decoration:none; color:inherit;}
 
-/* TOP BAR */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--charcoal-deep);padding:9px 48px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(201,168,76,0.2);}
-.topbar-brand{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:4px;color:rgba(226,201,126,0.5);font-weight:300;}
-.topbar-contact{display:flex;align-items:center;gap:20px;}
-.topbar-btn{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--gold-light);font-weight:400;letter-spacing:1px;text-decoration:none;transition:color 0.3s;}
-.topbar-btn:hover{color:var(--white);}
-.topbar-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5;}
-.topbar-divider{width:1px;height:12px;background:rgba(201,168,76,0.2);}
-.topbar-email{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.5px;}
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 48px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{display:flex; align-items:center; gap:10px; font-size:20px; font-weight:700; letter-spacing:-0.5px;}
+  .logo svg{width:26px; height:26px;}
+  nav ul{display:flex; gap:36px; list-style:none;}
+  nav a{font-size:14.5px; color:var(--charcoal); font-weight:500; transition:color .2s;}
+  nav a:hover{color:var(--gold-deep);}
+  .cta-btn{
+    background:var(--gold); color:#fff; padding:12px 24px; border-radius:30px;
+    font-size:14px; font-weight:700; box-shadow:0 4px 14px rgba(176,139,87,0.35);
+    transition:transform .15s ease, box-shadow .15s ease; border:none; cursor:pointer;
+  }
+  .cta-btn:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(176,139,87,0.45);}
 
-/* NAV */
-nav{position:fixed;top:38px;left:0;right:0;z-index:99;background:rgba(45,43,40,0.97);backdrop-filter:blur(12px);padding:16px 48px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(201,168,76,0.08);}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;letter-spacing:5px;color:var(--white);}
-.nav-logo span{color:var(--gold);}
-.nav-links{display:flex;gap:32px;align-items:center;}
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; height:88vh; min-height:600px; display:flex; align-items:flex-end;
+    background-image:linear-gradient(180deg, rgba(20,18,14,0.25) 0%, rgba(20,18,14,0.75) 100%),
+                      linear-gradient(135deg, #D9CBAE 0%, #8C6D3F 60%, #2B2620 100%),
+                      url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover; background-position:center; background-blend-mode:normal, normal, luminosity;
+  }
+  .hero-content{position:relative; z-index:1; color:#fff; padding:0 48px 72px;}
+  .hero-eyebrow{font-size:13px; letter-spacing:3px; color:var(--gold-light); font-weight:700; margin-bottom:18px;}
+  .hero-title{font-size:52px; font-weight:800; line-height:1.35; max-width:680px; margin-bottom:20px;}
+  .hero-sub{font-size:16px; color:#EDE9DF; max-width:480px; margin-bottom:32px;}
+  .hero-buttons{display:flex; gap:14px;}
+  .btn-ghost{
+    background:rgba(255,255,255,0.12); border:1.5px solid rgba(255,255,255,0.7); color:#fff;
+    padding:14px 28px; border-radius:30px; font-size:15px; font-weight:600;
+  }
+  .btn-primary{
+    background:var(--gold); color:#fff; padding:14px 30px; border-radius:30px; font-size:15px; font-weight:700;
+    box-shadow:0 6px 18px rgba(176,139,87,0.4);
+  }
 
-/* 네비 메뉴 — 골드 스타일로 개선 */
-.nav-links a{
-  font-size:11px;
-  letter-spacing:2.5px;
-  color:var(--gold-light);
-  text-decoration:none;
-  font-weight:400;
-  transition:all 0.3s;
-  text-transform:uppercase;
-  position:relative;
-  padding-bottom:3px;
-}
-.nav-links a::after{
-  content:'';
-  position:absolute;
-  bottom:0;left:0;right:0;
-  height:1px;
-  background:var(--gold);
-  transform:scaleX(0);
-  transition:transform 0.3s ease;
-  transform-origin:center;
-}
-.nav-links a:hover{color:var(--white);}
-.nav-links a:hover::after{transform:scaleX(1);}
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:110px 48px;}
+  .section-inner{max-width:1180px; margin:0 auto;}
+  .eyebrow{font-size:12.5px; letter-spacing:2.5px; color:var(--gold-deep); font-weight:700; margin-bottom:14px; text-align:center;}
+  .section-title{font-size:34px; font-weight:800; text-align:center; margin-bottom:16px; letter-spacing:-0.5px;}
+  .section-desc{font-size:16px; color:var(--gray); text-align:center; max-width:560px; margin:0 auto 64px; line-height:1.7;}
 
-.nav-kakao{display:flex;align-items:center;gap:6px;border:1px solid rgba(201,168,76,0.5) !important;color:var(--gold) !important;padding:7px 16px;font-size:10px;letter-spacing:1.5px;text-decoration:none;transition:all 0.3s;background:rgba(201,168,76,0.05);}
-.nav-kakao::after{display:none !important;}
-.nav-kakao:hover{background:rgba(201,168,76,0.15) !important;border-color:var(--gold) !important;color:var(--white) !important;}
-.nav-kakao svg{width:13px;height:13px;fill:var(--gold);}
+  /* ---------- BRAND STORY ---------- */
+  .story{background:var(--cream);}
+  .story-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .story-img{border-radius:20px; overflow:hidden; aspect-ratio:4/5; box-shadow:0 20px 50px rgba(0,0,0,0.08);}
+  .story-quote{font-size:28px; font-weight:700; line-height:1.5; margin-bottom:24px;}
+  .story-quote span{color:var(--gold-deep); font-style:italic;}
+  .story-body{font-size:15.5px; color:var(--gray); line-height:1.9; margin-bottom:28px;}
+  .pillars{display:flex; gap:28px; margin-top:8px;}
+  .pillar{flex:1;}
+  .pillar-num{font-size:12px; color:var(--gold); font-weight:800; letter-spacing:1.5px; margin-bottom:6px;}
+  .pillar-name{font-size:17px; font-weight:700; margin-bottom:6px;}
+  .pillar-desc{font-size:13px; color:var(--gray); line-height:1.6;}
 
-/* HERO */
-.hero{min-height:100vh;background:var(--charcoal-deep);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 48px 100px;position:relative;overflow:hidden;}
-.hero-pattern{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0.035;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(201,168,76,1) 59px,rgba(201,168,76,1) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(201,168,76,1) 59px,rgba(201,168,76,1) 60px);}
-.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
-.hero-corner{position:absolute;width:80px;height:80px;}
-.hero-corner.tl{top:80px;left:48px;border-top:1px solid rgba(201,168,76,0.2);border-left:1px solid rgba(201,168,76,0.2);}
-.hero-corner.tr{top:80px;right:48px;border-top:1px solid rgba(201,168,76,0.2);border-right:1px solid rgba(201,168,76,0.2);}
-.hero-corner.bl{bottom:48px;left:48px;border-bottom:1px solid rgba(201,168,76,0.2);border-left:1px solid rgba(201,168,76,0.2);}
-.hero-corner.br{bottom:48px;right:48px;border-bottom:1px solid rgba(201,168,76,0.2);border-right:1px solid rgba(201,168,76,0.2);}
-.hero-content{position:relative;z-index:2;}
-.hero-eyebrow{font-size:9px;letter-spacing:6px;color:var(--gold);font-weight:400;margin-bottom:32px;text-transform:uppercase;opacity:0;animation:fadeUp 0.8s 0.3s forwards;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,76px);font-weight:300;color:var(--white);line-height:1.2;letter-spacing:1px;margin-bottom:20px;opacity:0;animation:fadeUp 0.8s 0.5s forwards;}
-.hero-title em{font-style:italic;color:var(--gold-light);}
-.hero-divider{width:36px;height:1px;background:var(--gold);margin:0 auto 20px;opacity:0;animation:fadeIn 0.8s 0.7s forwards;}
-.hero-desc{font-size:13px;line-height:2;color:rgba(255,255,255,0.4);max-width:420px;margin:0 auto 52px;font-weight:300;opacity:0;animation:fadeUp 0.8s 0.8s forwards;}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 1s forwards;}
-.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);color:var(--gold);padding:12px 30px;font-size:10px;letter-spacing:3px;text-decoration:none;text-transform:uppercase;transition:all 0.3s;}
-.btn-outline:hover{background:var(--gold);color:var(--charcoal-deep);}
-.btn-outline-white{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);padding:12px 30px;font-size:10px;letter-spacing:2.5px;text-decoration:none;text-transform:uppercase;transition:all 0.3s;}
-.btn-outline-white:hover{border-color:var(--gold);color:var(--gold);}
-.btn-outline-white svg{width:13px;height:13px;fill:currentColor;}
-.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;opacity:0;animation:fadeIn 1s 1.3s forwards;}
-.hero-scroll-text{font-size:8px;letter-spacing:3px;color:rgba(255,255,255,0.2);text-transform:uppercase;}
-.hero-scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(201,168,76,0.35),transparent);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  /* ---------- TIER CARDS ---------- */
+  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .tier-card{
+    border-radius:20px; overflow:hidden; border:1px solid var(--line); background:#fff;
+    transition:transform .25s ease, box-shadow .25s ease; position:relative;
+  }
+  .tier-card:hover{transform:translateY(-6px); box-shadow:0 24px 48px rgba(0,0,0,0.1);}
+  .tier-card.featured{border:2px solid var(--gold); box-shadow:0 24px 48px rgba(176,139,87,0.18);}
+  .tier-img{aspect-ratio:4/3; position:relative;}
+  .tier-badge{
+    position:absolute; top:16px; left:16px; background:var(--gold); color:#fff;
+    font-size:11.5px; font-weight:700; padding:6px 14px; border-radius:20px; z-index:2;
+  }
+  .tier-body{padding:26px;}
+  .tier-eng{font-size:11px; letter-spacing:2px; color:var(--gold-deep); font-weight:700; margin-bottom:6px;}
+  .tier-name{font-size:22px; font-weight:800; margin-bottom:10px;}
+  .tier-price{font-size:20px; font-weight:800; color:var(--gold-deep); margin-bottom:16px;}
+  .tier-price span{font-size:13px; color:var(--gray); font-weight:500;}
+  .tier-list{list-style:none; font-size:13.5px; color:var(--charcoal); line-height:2;}
+  .tier-list li{padding-left:22px; position:relative;}
+  .tier-list li::before{content:"✓"; position:absolute; left:0; color:var(--sage); font-weight:700;}
 
-/* STRENGTHS */
-.strengths{background:var(--charcoal);padding:36px 48px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);}
-.strength-item{padding:0 36px;border-right:1px solid rgba(201,168,76,0.1);display:flex;align-items:flex-start;gap:14px;}
-.strength-item:first-child{padding-left:0;}
-.strength-item:last-child{border-right:none;}
-.strength-icon{width:34px;height:34px;flex-shrink:0;border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;margin-top:2px;}
-.strength-icon svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.5;}
-.strength-title{font-size:12px;font-weight:500;color:var(--white);margin-bottom:5px;}
-.strength-desc{font-size:11px;line-height:1.7;color:rgba(255,255,255,0.35);font-weight:300;}
+  /* ---------- STYLE GALLERY ---------- */
+  .style-gallery{background:var(--cream);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .style-item{border-radius:16px; overflow:hidden; aspect-ratio:3/4; position:relative; cursor:pointer;}
+  .style-item img{transition:transform .4s ease;}
+  .style-item:hover img{transform:scale(1.06);}
+  .style-overlay{
+    position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.65) 100%);
+    display:flex; align-items:flex-end; padding:18px;
+  }
+  .style-name{color:#fff; font-size:16px; font-weight:700;}
+  .gallery-note{text-align:center; font-size:13px; color:var(--gray); margin-top:28px;}
+  .gallery-cta{
+    margin-top:20px; text-align:center; padding:20px; background:var(--sage-light); border-radius:16px;
+    max-width:520px; margin-left:auto; margin-right:auto;
+  }
+  .gallery-cta p{font-size:14px; color:#3F5A3C; margin-bottom:12px;}
 
-/* SECTION */
-.section{padding:72px 48px;scroll-margin-top:110px;}
-.section-inner{max-width:1200px;margin:0 auto;}
-.section-eyebrow{font-size:9px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;font-weight:400;display:flex;align-items:center;gap:14px;}
-.section-eyebrow::after{content:'';flex:0 0 28px;height:1px;background:var(--gold);opacity:0.4;}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,40px);font-weight:300;line-height:1.25;color:var(--charcoal-deep);margin-bottom:40px;}
-.section-title em{font-style:italic;color:var(--gold);}
+  /* ---------- ESTIMATE FLOW DEMO ---------- */
+  .flow{}
+  .flow-steps{display:flex; justify-content:space-between; margin-bottom:60px; position:relative;}
+  .flow-steps::before{content:""; position:absolute; top:24px; left:60px; right:60px; height:2px; background:var(--line); z-index:0;}
+  .flow-step{flex:1; text-align:center; position:relative; z-index:1;}
+  .flow-circle{
+    width:48px; height:48px; border-radius:50%; background:var(--gold); color:#fff; font-weight:800; font-size:18px;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 14px;
+  }
+  .flow-circle.last{background:var(--sage);}
+  .flow-step-name{font-size:14px; font-weight:700; margin-bottom:4px;}
+  .flow-step-desc{font-size:12px; color:var(--gray); max-width:140px; margin:0 auto;}
 
-/* ABOUT */
-.about-grid{display:flex;flex-direction:column;gap:40px;}
-.about-text{max-width:700px;}
-.about-text p{font-size:15px;line-height:2;color:var(--text-mid);font-weight:300;margin-bottom:0;}
-.about-text p:last-child{margin-bottom:0;}
-.about-text p strong{color:var(--charcoal-deep);font-weight:500;}
-.about-values{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--cream-dark);padding-top:36px;}
-.value-item{padding:0 32px 0 0;border-right:1px solid var(--cream-dark);}
-.value-item:last-child{border-right:none;padding-right:0;}
-.value-label{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;font-weight:400;}
-.value-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--charcoal-deep);margin-bottom:8px;}
-.value-desc{font-size:12px;line-height:1.8;color:var(--text-mid);font-weight:300;}
+  .demo-card{
+    max-width:480px; margin:0 auto; border-radius:24px; overflow:hidden; border:1px solid var(--line);
+    box-shadow:0 30px 60px rgba(0,0,0,0.12);
+  }
+  .demo-top{padding:32px 32px 20px; text-align:center;}
+  .demo-icon{width:34px; margin:0 auto 14px;}
+  .demo-title{font-size:19px; font-weight:800; margin-bottom:4px;}
+  .demo-body{padding:0 32px 32px;}
+  .demo-price-box{background:var(--gold-light); border-radius:16px; padding:22px; text-align:center; margin-bottom:20px;}
+  .demo-price-label{font-size:12px; color:var(--gold-deep); font-weight:700; margin-bottom:6px;}
+  .demo-price{font-size:26px; font-weight:800; color:var(--charcoal);}
+  .demo-img{border-radius:14px; overflow:hidden; aspect-ratio:16/9; margin-bottom:18px;}
+  .demo-list{list-style:none; font-size:13px; color:var(--gray); margin-bottom:22px; line-height:1.9;}
+  .demo-list li{padding-left:20px; position:relative;}
+  .demo-list li::before{content:"·"; position:absolute; left:4px; color:var(--gold);}
+  .demo-btn{
+    width:100%; padding:16px; background:var(--gold); color:#fff; border:none; border-radius:30px;
+    font-size:15px; font-weight:700; box-shadow:0 8px 20px rgba(176,139,87,0.35); cursor:pointer;
+  }
+  .demo-sub{text-align:center; font-size:12px; color:var(--gray); margin-top:12px;}
 
-/* BI */
-.bi-section{background:var(--charcoal-deep);padding:72px 48px;scroll-margin-top:110px;}
-.bi-section .section-title{color:var(--white);}
-.bi-section .section-eyebrow{color:var(--gold);}
-.bi-section .section-eyebrow::after{background:var(--gold);}
-.bi-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.bi-logo-wrap{display:flex;justify-content:center;align-items:center;}
-.bi-logo-img{width:280px;height:280px;object-fit:contain;border:1px solid rgba(201,168,76,0.15);}
-.bi-info{display:flex;flex-direction:column;gap:32px;}
-.bi-item-label{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;font-weight:400;}
-.bi-item-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:var(--white);margin-bottom:7px;font-style:italic;}
-.bi-item-desc{font-size:12px;line-height:1.85;color:rgba(255,255,255,0.4);font-weight:300;}
-.bi-colors{display:flex;gap:12px;margin-top:8px;}
-.bi-color{display:flex;flex-direction:column;align-items:center;gap:7px;}
-.bi-color-swatch{width:44px;height:44px;border:1px solid rgba(255,255,255,0.1);}
-.bi-color-name{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:1px;text-align:center;}
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--charcoal); color:#C9C5BC; padding:60px 48px 32px;}
+  .footer-inner{max-width:1180px; margin:0 auto;}
+  .footer-top{display:flex; justify-content:space-between; padding-bottom:36px; border-bottom:1px solid #3A372F; margin-bottom:24px; flex-wrap:wrap; gap:24px;}
+  .footer-logo{font-size:20px; font-weight:800; color:#fff; margin-bottom:10px;}
+  .footer-tagline{font-size:13px; color:#9A968D;}
+  .footer-links{display:flex; gap:32px; font-size:13px;}
+  .footer-links a{color:#C9C5BC;}
+  .footer-bottom{font-size:11.5px; color:#78746B; line-height:1.8;}
 
-/* PORTFOLIO */
-.portfolio-wrap{background:var(--charcoal);padding:72px 48px;scroll-margin-top:110px;}
-.portfolio-wrap .section-title{color:var(--white);}
-.portfolio-wrap .section-eyebrow{color:var(--gold);}
-.portfolio-wrap .section-eyebrow::after{background:var(--gold);}
-.portfolio-filters{display:flex;gap:8px;margin-bottom:36px;flex-wrap:wrap;}
-.pfilter{padding:8px 20px;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.35);text-transform:uppercase;cursor:pointer;border:1px solid rgba(255,255,255,0.1);background:transparent;font-family:'Noto Sans KR',sans-serif;transition:all 0.3s;font-weight:400;}
-.pfilter:hover{color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.3);}
-.pfilter.active{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,0.05);}
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
-.pcard{display:block;}
-.pcard.hidden{display:none;}
-.pcard{height:300px;background:var(--charcoal-deep);position:relative;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;transition:transform 0.5s ease;}
-.pcard:hover{transform:scale(0.983);}
-.pcard::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(26,25,23,0.93) 0%,rgba(26,25,23,0.1) 55%,transparent 100%);z-index:1;transition:opacity 0.4s;}
-.pcard:hover::before{opacity:0.75;}
-.pcard-bg{position:absolute;top:0;left:0;right:0;bottom:0;}
-.pcard-inner{width:100%;height:100%;transition:transform 0.6s ease;}
-.pcard:hover .pcard-inner{transform:scale(1.04);}
-.pcard-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:rgba(201,168,76,0.06);letter-spacing:-2px;}
-.pcard-img{width:100%;height:100%;object-fit:cover;}
-.pcard-content{position:relative;z-index:2;transition:transform 0.4s ease;}
-.pcard:hover .pcard-content{transform:translateY(-4px);}
-.pcard-tag{display:inline-block;font-size:8px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;font-weight:400;border:1px solid rgba(201,168,76,0.25);padding:3px 9px;}
-.pcard-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--white);margin-bottom:5px;}
-.pcard-desc{font-size:11px;color:rgba(255,255,255,0.38);line-height:1.6;font-weight:300;}
-.portfolio-note{text-align:center;margin-top:24px;font-size:11px;color:rgba(255,255,255,0.2);font-style:italic;font-family:'Cormorant Garamond',serif;letter-spacing:1px;}
+  @media(max-width:900px){
+    .story-grid, .tiers{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .hero-title{font-size:34px;}
+    nav ul{display:none;}
+    section{padding:70px 24px;}
+  }  /* ---------- MODAL POPUP ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:1000; display:none;
+    align-items:center; justify-content:center;
+    background-image:linear-gradient(rgba(20,18,14,0.72), rgba(20,18,14,0.72)), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover; background-position:center;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-card{
+    background:#fff; border-radius:24px; width:440px; max-width:90vw; padding:36px;
+    box-shadow:0 30px 70px rgba(0,0,0,0.35); animation:modalIn .25s ease;
+  }
+  @keyframes modalIn{from{opacity:0; transform:translateY(16px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);}}
+  .modal-icon{width:32px; margin:0 auto 16px; display:block;}
+  .modal-title{font-size:19px; font-weight:800; text-align:center; margin-bottom:26px;}
+  .modal-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;}
+  .modal-opt{
+    border:1.5px solid var(--line); background:var(--cream); border-radius:14px; padding:18px 0;
+    text-align:center; font-size:14.5px; font-weight:600; cursor:pointer; transition:all .15s ease;
+  }
+  .modal-opt:hover{border-color:var(--gold); background:var(--gold-light);}
+  .modal-opt.selected{border-color:var(--gold); background:var(--gold-light); color:var(--gold-deep); font-weight:800;}
+  .modal-note{background:var(--cream); border-radius:12px; padding:14px 16px; font-size:12.5px; color:var(--gold-deep); margin-bottom:22px;}
+  .modal-note b{cursor:pointer; text-decoration:underline;}
+  .modal-next{
+    width:100%; padding:16px; background:var(--gold); color:#fff; border:none; border-radius:30px;
+    font-size:15px; font-weight:700; box-shadow:0 8px 20px rgba(176,139,87,0.35); cursor:pointer; margin-bottom:14px;
+  }
+  .modal-close{display:block; text-align:center; font-size:12.5px; color:var(--gray); cursor:pointer;}
 
-/* PROCESS */
-.process-wrap{background:var(--cream-mid);padding:72px 48px;scroll-margin-top:110px;}
-.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:48px;border:1px solid var(--cream-dark);}
-.step{padding:28px 20px;border-right:1px solid var(--cream-dark);background:var(--white);transition:background 0.3s,transform 0.3s;}
-.step:last-child{border-right:none;}
-.step:hover{background:var(--cream);transform:translateY(-3px);}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold-pale);line-height:1;margin-bottom:14px;}
-.step-bar{width:14px;height:1px;background:var(--gold);margin-bottom:12px;opacity:0.4;}
-.step-title{font-size:12px;font-weight:500;color:var(--charcoal-deep);margin-bottom:7px;}
-.step-desc{font-size:11px;line-height:1.8;color:var(--text-light);font-weight:300;}
-
-/* CONTACT */
-.contact-wrap{background:var(--charcoal-deep);padding:72px 48px;scroll-margin-top:110px;}
-.contact-wrap .section-title{color:var(--white);}
-.contact-wrap .section-eyebrow{color:var(--gold);}
-.contact-wrap .section-eyebrow::after{background:var(--gold);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
-.contact-items{display:flex;flex-direction:column;}
-.contact-item{padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
-.contact-label{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:9px;font-weight:400;}
-.contact-value{font-size:18px;color:var(--white);font-weight:300;letter-spacing:0.3px;}
-.contact-value a{color:inherit;text-decoration:none;transition:color 0.3s;}
-.contact-value a:hover{color:var(--gold);}
-.contact-sub{font-size:11px;color:rgba(255,255,255,0.2);margin-top:4px;font-weight:300;}
-.contact-cta{border:1px solid rgba(201,168,76,0.15);padding:44px 36px;background:rgba(201,168,76,0.02);position:relative;}
-.contact-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);}
-.contact-cta-label{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;font-weight:400;}
-.contact-cta-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--white);margin-bottom:12px;line-height:1.35;}
-.contact-cta-desc{font-size:12px;color:rgba(255,255,255,0.3);margin-bottom:28px;line-height:1.9;font-weight:300;}
-.contact-btns{display:flex;flex-direction:column;gap:10px;}
-.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--charcoal-deep);padding:13px 28px;font-size:10px;letter-spacing:2px;text-decoration:none;text-transform:uppercase;font-weight:500;transition:background 0.3s;}
-.btn-gold:hover{background:var(--gold-light);}
-.btn-kakao-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(201,168,76,0.35);color:var(--gold);padding:13px 28px;font-size:10px;letter-spacing:2px;text-decoration:none;text-transform:uppercase;font-weight:400;transition:all 0.3s;}
-.btn-kakao-cta:hover{background:rgba(201,168,76,0.1);}
-.btn-kakao-cta svg{width:14px;height:14px;fill:var(--gold);}
-
-/* FOOTER */
-footer{background:#1C1B18;padding:24px 48px 18px;border-top:1px solid rgba(201,168,76,0.07);}
-.footer-main{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:4px;color:rgba(201,168,76,0.4);font-weight:300;}
-.footer-info{font-size:10px;color:rgba(255,255,255,0.12);letter-spacing:0.5px;text-align:right;line-height:1.8;}
-.footer-biz{border-top:1px solid rgba(255,255,255,0.05);padding-top:12px;font-size:10px;color:rgba(255,255,255,0.1);letter-spacing:0.3px;line-height:1.8;text-align:center;}
-
-@media(max-width:768px){
-.topbar{padding:8px 16px;}
-.topbar-brand{display:none;}
-.topbar-email{display:none;}
-nav{padding:12px 16px;top:36px;}
-.nav-links a:not(.nav-kakao){display:none;}
-.nav-logo{font-size:14px;letter-spacing:3px;}
-.hero{padding:120px 20px 80px;}
-.hero-corner{display:none;}
-.hero-eyebrow{font-size:8px;letter-spacing:3px;margin-bottom:20px;}
-.hero-title{font-size:36px !important;letter-spacing:0px;margin-bottom:16px;}
-.hero-desc{font-size:12px;margin-bottom:36px;}
-.hero-btns{flex-direction:column;align-items:center;gap:10px;}
-.btn-outline,.btn-outline-white{width:240px;justify-content:center;padding:13px 20px;}
-.strengths{grid-template-columns:1fr;gap:0;padding:0;}
-.strength-item{border-right:none;border-bottom:1px solid rgba(201,168,76,0.1);padding:20px 20px;gap:12px;}
-.strength-item:last-child{border-bottom:none;}
-.section,.bi-section,.portfolio-wrap,.process-wrap,.contact-wrap{padding:48px 20px;scroll-margin-top:90px;}
-.section-title{font-size:28px;margin-bottom:28px;}
-.about-grid,.contact-grid,.bi-grid{grid-template-columns:1fr;gap:28px;}
-.about-text p{font-size:13px;}
-.value-item{padding:16px 0 16px 18px;}
-.value-title{font-size:18px;}
-.portfolio-grid{grid-template-columns:1fr;gap:3px;}
-.pcard{height:220px;}
-.process-steps{grid-template-columns:1fr 1fr;border:none;gap:2px;}
-.step{border-right:none;border-bottom:none;padding:20px 16px;margin-bottom:2px;}
-.step-num{font-size:24px;margin-bottom:10px;}
-.contact-grid{grid-template-columns:1fr;gap:28px;}
-.contact-cta{padding:28px 20px;}
-.bi-logo-img{width:180px;height:180px;}
-.bi-info{gap:20px;}
-footer{padding:20px 16px 16px;}
-.footer-main{flex-direction:column;gap:10px;text-align:center;}
-.footer-info{text-align:center;}
-.footer-biz{font-size:9px;}
-}
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="topbar-brand">BONO LUMIÈRE DESIGN</div>
-  <div class="topbar-contact">
-    <a href="tel:01045704104" class="topbar-btn">
-      <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-      010-4570-4104
-    </a>
-    <div class="topbar-divider"></div>
-    <div class="topbar-email">info@bonolumiere.co.kr</div>
-  </div>
-</div>
+<header>
+  <div class="logo" style="font-family:Georgia,'Noto Serif KR',serif; font-weight:400; letter-spacing:6px; font-size:19px;">바른집</div>
+  <nav><ul>
+    <li><a href="#story">브랜드철학</a></li>
+    <li><a href="#flow">진행과정</a></li>
+    <li><a href="#quality">SV·품질보증</a></li>
+    <li><a href="#tiers">서비스안내</a></li>
+  </ul></nav>
+  <button class="cta-btn">견적 상담 신청</button>
+</header>
 
-<nav>
-  <div class="nav-logo">BONO <span>LUMIÈRE</span></div>
-  <div class="nav-links">
-    <a href="#about">회사소개</a>
-    <a href="#portfolio">포트폴리오</a>
-    <a href="#process">프로세스</a>
-    <a href="#contact">문의하기</a>
-    <a href="http://pf.kakao.com/_myxmxfX/chat" class="nav-kakao" target="_blank">
-      <svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.92 2 11.75c0 3.03 1.77 5.7 4.45 7.35L5.5 22l3.85-2.05c.86.18 1.74.3 2.65.3 5.52 0 10-3.92 10-8.5S17.52 3 12 3z"/></svg>
-      카톡 상담
-    </a>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="hero-pattern"></div><div class="hero-glow"></div>
-  <div class="hero-corner tl"></div><div class="hero-corner tr"></div>
-  <div class="hero-corner bl"></div><div class="hero-corner br"></div>
+<!-- HERO -->
+<section class="hero" style="padding:0;">
   <div class="hero-content">
-    <div class="hero-eyebrow">Commercial Interior Design &amp; Construction</div>
-    <h1 class="hero-title">공간을 밝히는 <em>생각</em>,<br>삶을 바꾸는 디자인</h1>
-    <div class="hero-divider"></div>
-    <p class="hero-desc">보노루미에르디자인은 감성과 완성도가 만나는<br>공간을 설계하고 시공합니다</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-outline">프로젝트 문의하기</a>
-      <a href="http://pf.kakao.com/_myxmxfX/chat" class="btn-outline-white" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.92 2 11.75c0 3.03 1.77 5.7 4.45 7.35L5.5 22l3.85-2.05c.86.18 1.74.3 2.65.3 5.52 0 10-3.92 10-8.5S17.52 3 12 3z"/></svg>
-        카톡 상담하기
-      </a>
+    <div class="hero-eyebrow">STANDARD INTERIOR · 수도권 서비스</div>
+    <div class="hero-title">공간을 짓기 전에,<br>기준을 짓습니다</div>
+    <div class="hero-sub">평수만 입력하면 바로 예상 견적이 나옵니다. 연락처 없이, 지금 바로 확인해보세요.</div>
+    <div class="hero-buttons">
+      <button class="btn-primary">내 견적 확인하기 →</button>
+      <button class="btn-ghost">서비스 둘러보기</button>
     </div>
   </div>
-  <div class="hero-scroll"><div class="hero-scroll-text">Scroll</div><div class="hero-scroll-line"></div></div>
 </section>
 
-<div class="strengths">
-  <div class="strength-item fade-up">
-    <div class="strength-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-    <div><div class="strength-title">설계 · 시공 원스톱</div><div class="strength-desc">기획부터 준공까지 한 팀이 책임지는 일관된 품질 관리</div></div>
-  </div>
-  <div class="strength-item fade-up delay-2">
-    <div class="strength-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-    <div><div class="strength-title">전담 현장 책임 관리</div><div class="strength-desc">경험 많은 현장소장이 시공 전 과정을 직접 관리합니다</div></div>
-  </div>
-  <div class="strength-item fade-up delay-4">
-    <div class="strength-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-    <div><div class="strength-title">합리적 투명 견적</div><div class="strength-desc">항목별 상세 견적으로 숨겨진 비용 없이 신뢰를 드립니다</div></div>
-  </div>
-</div>
-
-<section class="section" id="about">
-  <div class="section-inner">
-    <div class="section-eyebrow fade-up">About Us</div>
-    <h2 class="section-title fade-up delay-1">설계부터 시공까지,<br><em>하나의 손으로</em></h2>
-    <div class="about-grid">
-      <div class="about-text fade-up delay-2">
-        <p><strong>보노루미에르디자인</strong>은 호스텔·병원·상업시설·주거공간까지 다양한 공간을 설계하고 시공하는 인테리어 전문 기업입니다.</p>
-        <p>좋은 공간은 그 안에 머무는 사람의 삶을 바꿉니다. 우리는 감성과 완성도가 만나는 공간을 만듭니다.</p>
-        <p>보노루미에르만의 감성으로 오래 기억되는 공간을 만들어드립니다.</p>
+<!-- BRAND STORY -->
+<section class="story" id="story">
+  <div class="section-inner story-grid">
+    <div class="story-img">
+      <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=1000&auto=format&fit=crop" alt="story">
+    </div>
+    <div>
+      <div class="eyebrow" style="text-align:left;">OUR STORY · 우리의 이야기</div>
+      <div class="story-quote">바른집은 묻습니다.<br><span>"공간과 시공, 왜 늘 숨겨져 있었을까요?"</span></div>
+      <div class="story-body">
+        견적을 받으려면 며칠을 기다려야 하고, 왜 이 가격인지 설명해주는 곳은 없었습니다.
+        바른집은 이 질문에서 시작했습니다 — 연락처 없이도, 내 공간의 가격을 그 자리에서 확인할 수 있는 구조를 만들었습니다.
+        계약 이후에도 현장을 상시 점검하는 SV 시스템으로, 시공이 끝나는 순간이 아니라 살아가는 동안의 신뢰를 지킵니다.
       </div>
-      <div class="about-values">
-        <div class="value-item fade-up delay-2"><div class="value-label">LUMEN</div><div class="value-title">공간을 밝히는 아이디어</div><div class="value-desc">고객의 니즈와 공간의 가능성을 깊이 이해하고, 창의적인 설계로 최적의 방향을 제안합니다.</div></div>
-        <div class="value-item fade-up delay-3"><div class="value-label">TERRA</div><div class="value-title">바탕의 견고함</div><div class="value-desc">친환경 자재와 완벽한 마감으로 인테리어의 기본기를 타협 없이 지킵니다.</div></div>
-        <div class="value-item fade-up delay-4"><div class="value-label">CONNECT</div><div class="value-title">고객과의 조화</div><div class="value-desc">고객의 라이프스타일과 디자이너의 감각이 어우러져 단 하나뿐인 맞춤형 공간을 만듭니다.</div></div>
+      <div class="pillars">
+        <div class="pillar"><div class="pillar-num">01</div><div class="pillar-name">기준</div><div class="pillar-desc">정찰 가격, 표준 공정</div></div>
+        <div class="pillar"><div class="pillar-num">02</div><div class="pillar-name">신뢰</div><div class="pillar-desc">계약부터 AS까지 책임</div></div>
+        <div class="pillar"><div class="pillar-num">03</div><div class="pillar-name">상생</div><div class="pillar-desc">협력사와 함께 성장</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="bi-section" id="bi">
+<!-- TIERS -->
+<section id="tiers">
   <div class="section-inner">
-    <div class="section-eyebrow fade-up">Brand Identity</div>
-    <h2 class="section-title fade-up delay-1">브랜드 아이덴티티</h2>
-    <div class="bi-grid">
-      <div class="bi-logo-wrap fade-up delay-2">
-        <img class="bi-logo-img" src="data:image/png;base64,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" alt="BONO LUMIÈRE DESIGN 로고">
-      </div>
-      <div class="bi-info">
-        <div class="fade-up delay-2">
-          <div class="bi-item-label">Brand Name</div>
-          <div class="bi-item-title">BONO LUMIÈRE DESIGN</div>
-          <div class="bi-item-desc">프랑스어로 '좋은(BONO)'과 '빛(LUMIÈRE)'이 만나 탄생한 이름. 좋은 생각이 공간을 밝히고, 좋은 공간이 삶을 바꾼다는 철학을 담았습니다.</div>
-        </div>
-        <div class="fade-up delay-3">
-          <div class="bi-item-label">Brand Slogan</div>
-          <div class="bi-item-title">공간을 밝히는 생각, 삶을 바꾸는 디자인</div>
-          <div class="bi-item-desc">단순한 인테리어를 넘어 공간을 사용하는 사람의 삶과 경험을 설계한다는 보노루미에르만의 철학입니다.</div>
-        </div>
-        <div class="fade-up delay-4">
-          <div class="bi-item-label">Brand Colors</div>
-          <div class="bi-colors">
-            <div class="bi-color"><div class="bi-color-swatch" style="background:#2D2B28;"></div><div class="bi-color-name">Deep Charcoal</div></div>
-            <div class="bi-color"><div class="bi-color-swatch" style="background:#C9A84C;border-color:rgba(255,255,255,0.2);"></div><div class="bi-color-name">Champagne Gold</div></div>
-            <div class="bi-color"><div class="bi-color-swatch" style="background:#F7F2EA;border-color:rgba(255,255,255,0.15);"></div><div class="bi-color-name">Cream White</div></div>
-          </div>
+    <div class="eyebrow">SERVICE · 서비스안내</div>
+    <div class="section-title">세 가지 기준, 하나의 신뢰</div>
+    <div class="section-desc">평수를 입력하면 등급별 예상 견적이 즉시 계산됩니다. 정확한 최종 견적은 방문 실측 후 확정됩니다.</div>
+    <div class="tiers">
+      <div class="tier-card">
+        <div class="tier-img"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop" alt="light"></div>
+        <div class="tier-body">
+          <div class="tier-eng">LIGHT</div>
+          <div class="tier-name">베이직</div>
+          <div class="tier-price">평당 128만원<span> ~</span></div>
+          <ul class="tier-list">
+            <li>강마루 기본 시공</li>
+            <li>합지 도배</li>
+            <li>PET 상판 주방</li>
+            <li>기본 위생기구·조명</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<div class="portfolio-wrap" id="portfolio">
-  <div class="section-inner">
-    <div class="section-eyebrow fade-up">Portfolio</div>
-    <h2 class="section-title fade-up delay-1">디자인 포트폴리오</h2>
-    <div class="portfolio-filters fade-up delay-2">
-      <button class="pfilter active" onclick="filterCards('all',this)">ALL</button>
-      <button class="pfilter" onclick="filterCards('hostel',this)">HOSTEL</button>
-      <button class="pfilter" onclick="filterCards('commercial',this)">COMMERCIAL</button>
-      <button class="pfilter" onclick="filterCards('medical',this)">MEDICAL</button>
-      <button class="pfilter" onclick="filterCards('living',this)">LIVING</button>
-      <button class="pfilter" onclick="filterCards('office',this)">OFFICE</button>
-    </div>
-    <div class="portfolio-grid">
-      <div class="pcard" data-cat="hostel">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955099/KakaoTalk_20260622_183012767_09_srjawo.jpg" alt="호스텔 공용 라운지"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Hostel · Completed</div><div class="pcard-title">우드&라이트 부티크 호스텔</div><div class="pcard-desc">간접조명과 우드 패널이 만드는 감성 숙박 공간</div></div>
+      <div class="tier-card featured">
+        <div class="tier-badge">가장 많이 선택</div>
+        <div class="tier-img"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="signature"></div>
+        <div class="tier-body">
+          <div class="tier-eng">SIGNATURE</div>
+          <div class="tier-name">시그니처</div>
+          <div class="tier-price">평당 162만원<span> ~</span></div>
+          <ul class="tier-list">
+            <li>프리미엄 강마루</li>
+            <li>실크 도배</li>
+            <li>인조대리석 상판</li>
+            <li>3연동 중문</li>
+          </ul>
+        </div>
       </div>
-      <div class="pcard" data-cat="hostel">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955101/KakaoTalk_20260622_183012767_11_ebjtgk.jpg" alt="호스텔 객실"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Hostel · Completed</div><div class="pcard-title">프라이빗 객실</div><div class="pcard-desc">우드 헤드보드와 간접조명이 만드는 아늑한 공간</div></div>
-      </div>
-      <div class="pcard" data-cat="hostel">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955099/KakaoTalk_20260622_183012767_10_ul4gyi.jpg" alt="호스텔 공용 공간"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Hostel · Completed</div><div class="pcard-title">공용 라운지 & 키친</div><div class="pcard-desc">발광 파티션이 인상적인 감성 공유 공간</div></div>
-      </div>
-      <div class="pcard" data-cat="commercial">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955330/KakaoTalk_20250423_103323734_02_j2cc6e.jpg" alt="럭셔리 카페"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Café · Design Proposal</div><div class="pcard-title">럭셔리 카페 & 다이닝</div><div class="pcard-desc">마블과 골드가 어우러진 프리미엄 F&B 공간</div></div>
-      </div>
-      <div class="pcard" data-cat="commercial">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955400/KakaoTalk_20241121_052854949_05_kb8ewk.png" alt="상업 공간"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Commercial · Design Proposal</div><div class="pcard-title">복합 상업 공간</div><div class="pcard-desc">다양한 용도를 아우르는 유연한 공간 설계</div></div>
-      </div>
-      <div class="pcard" data-cat="commercial">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955540/KakaoTalk_20260406_083853541_zphdvr.jpg" alt="레스토랑"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">F&B · Design Proposal</div><div class="pcard-title">파인다이닝 레스토랑</div><div class="pcard-desc">음식만큼 기억되는 공간의 분위기</div></div>
-      </div>
-      <div class="pcard" data-cat="commercial">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955159/KakaoTalk_20260406_083749087_05_qoy8as.jpg" alt="프리미엄 라운지"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Commercial · Completed</div><div class="pcard-title">프리미엄 라운지</div><div class="pcard-desc">브랜드 철학이 공간으로 완성되는 곳</div></div>
-      </div>
-      <div class="pcard" data-cat="office">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955632/KakaoTalk_20250423_103024918_04_hhs5hd.jpg" alt="오피스 인테리어"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Office · Design Proposal</div><div class="pcard-title">모던 오피스</div><div class="pcard-desc">업무 효율과 감성이 공존하는 오피스 공간</div></div>
-      </div>
-      <div class="pcard" data-cat="medical">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782956103/1_rvvez8.jpg" alt="병원 인테리어"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Medical · Completed</div><div class="pcard-title">프리미엄 의원 인테리어</div><div class="pcard-desc">환자 경험을 최우선으로 설계한 의료 공간</div></div>
-      </div>
-      <div class="pcard" data-cat="medical">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782955971/KakaoTalk_20260407_090643382_05_w5btbv.jpg" alt="클리닉"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Medical · Completed</div><div class="pcard-title">클리닉 리모델링</div><div class="pcard-desc">신뢰감과 편안함이 공존하는 의료 환경</div></div>
-      </div>
-      <div class="pcard" data-cat="living">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782957628/%EB%A6%AC%EB%B9%99%EC%95%84%ED%8C%8C%ED%8A%B8_afikll.png" alt="모던 미니멀 아파트"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Living · Design Proposal</div><div class="pcard-title">내추럴 우드 미니멀</div><div class="pcard-desc">절제된 따뜻함이 흐르는 일상의 공간</div></div>
-      </div>
-      <div class="pcard" data-cat="living">
-        <div class="pcard-bg"><div class="pcard-inner"><img class="pcard-img" src="https://res.cloudinary.com/gy1qyow2/image/upload/v1782957628/Gemini_Generated_Image_jpulrpjpulrpjpul_cede4h.png" alt="젠 스타일 리빙"></div></div>
-        <div class="pcard-content"><div class="pcard-tag">Living · Design Proposal</div><div class="pcard-title">젠 스타일 리빙</div><div class="pcard-desc">일본식 미니멀과 한국 감성이 만나는 공간</div></div>
-      </div>
-    </div>
-    <div class="portfolio-note fade-up">* Completed — 실제 시공 완료 &nbsp;|&nbsp; Design Proposal — 설계 제안 및 3D 시각화</div>
-  </div>
-</div>
-
-<section class="section process-wrap" id="process">
-  <div class="section-inner">
-    <div class="section-eyebrow fade-up">Process</div>
-    <h2 class="section-title fade-up delay-1">진행 프로세스</h2>
-    <div class="process-steps">
-      <div class="step fade-up delay-1"><div class="step-num">01</div><div class="step-bar"></div><div class="step-title">초기 상담</div><div class="step-desc">공간 방향성, 예산, 일정을 함께 논의합니다</div></div>
-      <div class="step fade-up delay-2"><div class="step-num">02</div><div class="step-bar"></div><div class="step-title">디자인 설계</div><div class="step-desc">컨셉과 도면, 3D 시안을 제안합니다</div></div>
-      <div class="step fade-up delay-3"><div class="step-num">03</div><div class="step-bar"></div><div class="step-title">견적 확정</div><div class="step-desc">투명한 견적서로 계약을 체결합니다</div></div>
-      <div class="step fade-up delay-4"><div class="step-num">04</div><div class="step-bar"></div><div class="step-title">시공 진행</div><div class="step-desc">전담 현장소장이 품질을 관리합니다</div></div>
-      <div class="step fade-up delay-5"><div class="step-num">05</div><div class="step-bar"></div><div class="step-title">준공 · AS</div><div class="step-desc">준공 후 하자보수까지 책임집니다</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section contact-wrap" id="contact">
-  <div class="section-inner">
-    <div class="section-eyebrow fade-up">Contact</div>
-    <h2 class="section-title fade-up delay-1">프로젝트를 시작하세요</h2>
-    <div class="contact-grid">
-      <div class="contact-items fade-up delay-2">
-        <div class="contact-item"><div class="contact-label">대표 전화</div><div class="contact-value"><a href="tel:01045704104">010 · 4570 · 4104</a></div><div class="contact-sub">평일 09:00 — 18:00</div></div>
-        <div class="contact-item"><div class="contact-label">카카오톡 상담</div><div class="contact-value"><a href="http://pf.kakao.com/_myxmxfX/chat" target="_blank">카톡으로 바로 문의</a></div><div class="contact-sub">24시간 메시지 접수</div></div>
-        <div class="contact-item"><div class="contact-label">이메일</div><div class="contact-value"><a href="mailto:info@bonolumiere.co.kr">info@bonolumiere.co.kr</a></div></div>
-        <div class="contact-item"><div class="contact-label">전문 분야</div><div class="contact-value" style="font-size:14px;line-height:1.9;">호스텔 · 병원 · 상업시설 · 주거공간<br>설계 및 시공 전문</div></div>
-      </div>
-      <div class="contact-cta fade-up delay-3">
-        <div class="contact-cta-label">Free Consulting</div>
-        <div class="contact-cta-title">지금 바로<br>상담을 시작하세요</div>
-        <div class="contact-cta-desc">공간의 고민을 말씀해 주세요.<br>보노루미에르가 함께 고민하겠습니다.</div>
-        <div class="contact-btns">
-          <a href="tel:01045704104" class="btn-gold">📞 전화 상담하기</a>
-          <a href="http://pf.kakao.com/_myxmxfX/chat" class="btn-kakao-cta" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.92 2 11.75c0 3.03 1.77 5.7 4.45 7.35L5.5 22l3.85-2.05c.86.18 1.74.3 2.65.3 5.52 0 10-3.92 10-8.5S17.52 3 12 3z"/></svg>
-            카톡 상담하기
-          </a>
+      <div class="tier-card">
+        <div class="tier-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="prestige"></div>
+        <div class="tier-body">
+          <div class="tier-eng">PRESTIGE</div>
+          <div class="tier-name">프레스티지</div>
+          <div class="tier-price">평당 244만원<span> ~</span></div>
+          <ul class="tier-list">
+            <li>원목마루</li>
+            <li>친환경 인증 도배</li>
+            <li>엔지니어드스톤 상판</li>
+            <li>맞춤 제작 중문</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="footer-main">
-    <div class="footer-logo">BONO LUMIÈRE DESIGN</div>
-    <div class="footer-info">보노루미에르디자인 · info@bonolumiere.co.kr<br>© 2026 BONO LUMIÈRE DESIGN. All rights reserved.</div>
+<!-- STYLE GALLERY -->
+<section class="style-gallery">
+  <div class="section-inner">
+    <div class="eyebrow">STYLE · 대표 스타일 (예시)</div>
+    <div class="section-title">이런 무드는 어떠세요?</div>
+    <div class="section-desc">아래 4가지는 대표 예시이며, 상담 시 원하시는 스타일로 자유롭게 조합 가능합니다.</div>
+    <div class="gallery-grid">
+      <div class="style-item">
+        <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?q=80&w=600&auto=format&fit=crop" alt="modern">
+        <div class="style-overlay"><div class="style-name">모던</div></div>
+      </div>
+      <div class="style-item">
+        <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?q=80&w=600&auto=format&fit=crop" alt="wood">
+        <div class="style-overlay"><div class="style-name">우드 내추럴</div></div>
+      </div>
+      <div class="style-item">
+        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=600&auto=format&fit=crop" alt="white">
+        <div class="style-overlay"><div class="style-name">화이트 미니멀</div></div>
+      </div>
+      <div class="style-item">
+        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=600&auto=format&fit=crop" alt="classic">
+        <div class="style-overlay"><div class="style-name">클래식 헤리티지</div></div>
+      </div>
+    </div>
+    <div class="gallery-cta">
+      <p>+ 원하는 스타일이 없으신가요? 상담 시 참고 사진을 보여주시면 그대로 구현해드려요.</p>
+      <button class="cta-btn">상담 신청하기</button>
+    </div>
   </div>
-  <div class="footer-biz">상호: 보노루미에르디자인 · 대표: 김현우 · 사업자등록번호: 681-34-01574 · 주소: 경기도 용인시 기흥구 서천로201번길 11, 6층 22호(기흥 테라타워 지식산업센터)</div>
+</section>
+
+<!-- ESTIMATE FLOW -->
+<section class="flow" id="flow">
+  <div class="section-inner">
+    <div class="eyebrow">USER FLOW · 견적 진행 과정</div>
+    <div class="section-title">연락처 없이 시작해, 신뢰가 쌓인 뒤에 남깁니다</div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-circle">1</div><div class="flow-step-name">기본정보 입력</div><div class="flow-step-desc">평수·방·화장실·발코니</div></div>
+      <div class="flow-step"><div class="flow-circle">2</div><div class="flow-step-name">예상견적+사진 확인</div><div class="flow-step-desc">3단 가격 즉시 공개</div></div>
+      <div class="flow-step"><div class="flow-circle">3</div><div class="flow-step-name">카톡으로 저장</div><div class="flow-step-desc">연락처+주소 입력</div></div>
+      <div class="flow-step"><div class="flow-circle last">4</div><div class="flow-step-name">방문 예약</div><div class="flow-step-desc">날짜·시간 선택</div></div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-top">
+        <svg class="demo-icon" viewBox="0 0 200 200" fill="none">
+          <path d="M 20,130 C 60,127 96,120 130,103" stroke="#B08B57" stroke-width="14" stroke-linecap="round"/>
+          <path d="M 130,103 C 150,90 164,58 180,30 C 192,52 202,74 218,90" stroke="#2B2B2B" stroke-width="14" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="demo-title">예상 견적 결과</div>
+      </div>
+      <div class="demo-body">
+        <div class="demo-price-box">
+          <div class="demo-price-label">시그니처 · 30평 기준</div>
+          <div class="demo-price">4,860만원</div>
+        </div>
+        <div class="demo-img"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop" alt="result"></div>
+        <ul class="demo-list">
+          <li>프리미엄 강마루 · 실크 도배</li>
+          <li>인조대리석 상판 · 3연동 중문</li>
+          <li>철거비 포함, 방문 실측 후 확정</li>
+        </ul>
+        <button class="demo-btn">카톡으로 견적 저장 + 상담 신청</button>
+        <div class="demo-sub">지금 입력하신 정보가 사라지지 않게 저희가 담아둘게요</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="quality">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">바른집</div>
+        <div class="footer-tagline">공간을 짓기 전에, 기준을 짓습니다</div>
+      </div>
+      <div class="footer-links">
+        <a href="#">회사소개</a>
+        <a href="#">협력사 파트너 모집</a>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      사업자: 보노루미에르디자인 (준비중) · 서비스 지역: 수도권 · 이 페이지는 내부 검토용 프로토타입이며, 이미지는 임시로 삽입된 참고용입니다.
+    </div>
+  </div>
 </footer>
 
+<!-- MODAL POPUP -->
+<div class="modal-overlay" id="spaceModal">
+  <div class="modal-card">
+    <svg class="modal-icon" viewBox="0 0 200 200" fill="none">
+      <path d="M 20,130 C 60,127 96,120 130,103" stroke="#B08B57" stroke-width="14" stroke-linecap="round"/>
+      <path d="M 130,103 C 150,90 164,58 180,30 C 192,52 202,74 218,90" stroke="#2B2B2B" stroke-width="14" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="modal-title">어떤 공간을 인테리어 하실 건가요?</div>
+    <div class="modal-grid">
+      <div class="modal-opt selected" onclick="selectOpt(this)">아파트</div>
+      <div class="modal-opt" onclick="selectOpt(this)">빌라</div>
+      <div class="modal-opt" onclick="selectOpt(this)">주택</div>
+      <div class="modal-opt" onclick="selectOpt(this)">오피스텔</div>
+    </div>
+    <div class="modal-note">상업 공간을 준비 중이신가요? <b>상업공간 견적 알아보기 ›</b></div>
+    <button class="modal-next" onclick="closeModal()">다음</button>
+    <span class="modal-close" onclick="closeModal()">나중에 볼게요</span>
+  </div>
+</div>
+
 <script>
-function filterCards(cat,el){
-  document.querySelectorAll('.pfilter').forEach(f=>f.classList.remove('active'));
-  el.classList.add('active');
-  document.querySelectorAll('.pcard').forEach(c=>{
-    if(cat==='all'||c.dataset.cat===cat){c.classList.remove('hidden');}
-    else{c.classList.add('hidden');}
+  function openModal(){ document.getElementById('spaceModal').classList.add('open'); }
+  function closeModal(){ document.getElementById('spaceModal').classList.remove('open'); }
+  function selectOpt(el){
+    document.querySelectorAll('.modal-opt').forEach(o=>o.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+  document.querySelectorAll('.btn-primary, .cta-btn').forEach(btn=>{
+    btn.addEventListener('click', openModal);
   });
-}
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
-},{threshold:0.12});
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+  // 처음 진입 시 자동으로 팝업 노출
+  window.addEventListener('load', function(){
+    setTimeout(openModal, 600);
+  });
 </script>
+
 </body>
 </html>
