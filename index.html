@@ -551,6 +551,97 @@
     setTimeout(openModal, 600);
   });
 </script>
+<!--
+  바른집 프론트엔드 ↔ GAS 연동 가이드
+  ------------------------------------------------------
+  1. Code.gs를 배포하고 나온 웹앱 URL을 아래 GAS_URL에 붙여넣으세요.
+  2. 각 폼 제출 시 submitToGAS(type, data)를 호출하면 됩니다.
+  3. 지금 프로토타입(index.html)의 "카톡으로 견적 저장 + 상담 신청" 버튼에
+     이 함수를 연결하면 실제로 시트에 저장되고 메일이 갑니다.
+------------------------------------------------------- -->
+<script>
+  // 배포된 실제 웹앱 URL
+  const GAS_URL = "https://script.google.com/macros/s/AKfycby-PcLPoP8f31-4s2FrbO1Q3spTkFCWCXAxeBqMkYcjPgm1kzYODlq5JpUTJi5CGHua/exec";
+
+  async function submitToGAS(type, data) {
+    try {
+      const res = await fetch(GAS_URL, {
+        method: "POST",
+        // GAS 웹앱은 CORS 프리플라이트를 지원하지 않아, text/plain으로 보내야 합니다.
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ type: type, data: data }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        console.log("저장 성공:", json.result);
+        return json.result;
+      } else {
+        console.error("저장 실패:", json.error);
+        alert("죄송해요, 잠시 후 다시 시도해주세요.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("네트워크 오류가 발생했어요. 다시 시도해주세요.");
+    }
+  }
+
+  // ---- 사용 예시 1: 주거용 세부견적 신청 ----
+  // goStep3()에서 계산한 값들을 모아서 이렇게 호출하면 됩니다.
+  function submitEstimate() {
+    submitToGAS("estimate", {
+      name: document.getElementById("nameInput").value,
+      phone: document.getElementById("phoneInput").value,
+      address: document.getElementById("addressInput").value,
+      spaceType: document.querySelector(".modal-opt.selected").innerText,
+      pyeong: document.getElementById("pyeongInput").value,
+      rooms: counts.room,
+      baths: counts.bath,
+      balconies: counts.balc,
+      tier: "시그니처", // 등급 선택 버튼 만들면 그 값으로 교체
+      estimatePrice: document.getElementById("resultPrice").innerText,
+      visitDateTime: document.getElementById("visitDateInput").value,
+      interestedOptions: [], // 관심옵션 체크박스 값들의 배열
+      referralCode: new URLSearchParams(window.location.search).get("ref") || "",
+    });
+  }
+
+  // ---- 사용 예시 2: 상업공간 견적신청 ----
+  function submitCommercial() {
+    submitToGAS("commercial", {
+      businessType: document.getElementById("bizTypeInput").value,
+      address: document.getElementById("comAddressInput").value,
+      pyeong: document.getElementById("comPyeongInput").value,
+      phone: document.getElementById("comPhoneInput").value,
+      visitDateTime: document.getElementById("comDateInput").value,
+    });
+  }
+
+  // ---- 사용 예시 3: 협력사 등록 ----
+  function submitCraftsman() {
+    submitToGAS("craftsman", {
+      companyName: document.getElementById("companyNameInput").value,
+      businessNumber: document.getElementById("bizNumberInput").value,
+      ceoName: document.getElementById("ceoNameInput").value,
+      specialty: document.getElementById("specialtyInput").value,
+      region: document.getElementById("regionInput").value,
+      years: document.getElementById("yearsInput").value,
+      portfolioLink: document.getElementById("portfolioInput").value,
+      phone: document.getElementById("craftsmanPhoneInput").value,
+    });
+  }
+
+  // ---- 사용 예시 4: 마케터제휴 신청 ----
+  function submitMarketer() {
+    submitToGAS("marketer", {
+      type: document.getElementById("marketerTypeInput").value, // "유튜버" or "공인중개사"
+      companyName: document.getElementById("marketerCompanyInput").value,
+      channelName: document.getElementById("channelNameInput").value,
+      managerName: document.getElementById("managerNameInput").value,
+      phone: document.getElementById("marketerPhoneInput").value,
+      businessNumber: document.getElementById("marketerBizNumberInput").value,
+    });
+  }
+</script>
 
 </body>
 </html>
