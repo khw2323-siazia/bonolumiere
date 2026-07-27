@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>바른집 — 공간을 짓기 전에, 기준을 짓습니다</title>
+<title>바른집 (가칭) — 공간을 짓기 전에, 기준을 짓습니다</title>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
 
@@ -585,7 +586,7 @@
     <button class="modal-x" onclick="askClose()">✕</button>
     <div class="demo-top" style="padding:0 0 6px;">
       <div class="demo-title">예상 견적서</div>
-      <div style="text-align:center; font-size:12px; color:var(--gray);">바른집 · 온라인 개산 견적</div>
+      <div style="text-align:center; font-size:12px; color:var(--gray);">바른집 (가칭) · 온라인 개산 견적</div>
     </div>
     <div class="demo-price-box" style="margin-top:14px;">
       <div class="demo-price-label"><span id="resultTier">시그니처</span> · <span id="resultPyeong">30</span>평 · 방<span id="resultRooms">3</span>·욕실<span id="resultBaths">2</span> 기준</div>
@@ -695,7 +696,11 @@
       </div>
     </div>
     <div class="modal-note">상업공간은 모듈형 가격 없이, 방문 실측 후 개별 견적으로 안내드려요.</div>
-    <button class="modal-next" id="comSubmitBtn" onclick="submitCommercial()">견적 요청하기</button>
+    <label style="display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--gray); margin:14px 0 4px;">
+      <input type="checkbox" id="comAgreeCheck" style="margin-top:2px;">
+      <span>개인정보 수집·이용에 동의합니다 (상담 및 방문예약 목적, 상담 종료 후 3년간 보관)</span>
+    </label>
+    <button class="modal-next" id="comSubmitBtn" onclick="submitCommercial()" style="margin-top:10px;">견적 요청하기</button>
     <span class="modal-close" onclick="closeOverlay('commercialModal')">닫기</span>
   </div>
   <div class="modal-card" id="commercialStep2" style="display:none;">
@@ -1034,6 +1039,7 @@
     const pyeong = document.getElementById('comPyeong').value.trim();
     const phone = document.getElementById('comPhone').value.trim();
     if (!bizType || !address || !phone) { alert("업태·주소·연락처는 필수 입력이에요."); return; }
+    if (!document.getElementById('comAgreeCheck').checked) { alert("개인정보 수집·이용에 동의해주셔야 신청이 가능해요."); return; }
 
     const btn = document.getElementById('comSubmitBtn');
     btn.innerText = "전송 중..."; btn.disabled = true;
@@ -1118,3 +1124,4 @@
 
 </body>
 </html>
+
