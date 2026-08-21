@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그러니깐, 호스텔이나 해볼까? — BONOLUMIÈRE JOURNAL</title>
+<meta name="description" content="정년은 짧고 미래는 불확실한 시대, 왜 지금 호스텔인가. 방한 외국인 관광객 추이, 관광사업체 현황, 서울 호텔 객실 부족 전망까지 근거 자료와 함께 정리했습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   BONOLUMIÈRE JOURNAL — shared stylesheet
+   Editorial / architecture-magazine tone (Cereal-inspired)
+   ========================================================== */
+:root{
+  --paper:#FAF9F6;
+  --ink:#1C1B19;
+  --ink-soft:#6B665C;
+  --line:#E2DED3;
+  --gold:#B08D4F;
+  --white:#FFFFFF;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans KR', sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+
+.serif{ font-family:'Noto Serif KR', serif; }
+
+/* ---------- topbar ---------- */
+.jr-topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:26px 6vw;
+  border-bottom:1px solid var(--line);
+}
+.jr-logo{
+  font-family:'Noto Serif KR', serif;
+  font-weight:600;
+  letter-spacing:0.22em;
+  font-size:14px;
+}
+.jr-crumb{
+  font-size:11px;
+  letter-spacing:0.14em;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+}
+.jr-crumb a{ color:var(--ink-soft); text-decoration:none; }
+.jr-crumb b{ color:var(--ink); font-weight:600; }
+
+/* ---------- labels ---------- */
+.eyebrow{
+  font-size:10.5px;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  font-weight:500;
+}
+.eyebrow.gold{ color:var(--gold); }
+
+/* ---------- footer ---------- */
+.jr-footer{
+  border-top:1px solid var(--line);
+  margin-top:120px;
+  padding:60px 6vw 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.jr-footer-brand{
+  font-family:'Noto Serif KR', serif;
+  font-weight:600;
+  letter-spacing:0.16em;
+  font-size:14px;
+}
+.jr-footer-meta{
+  font-size:11px;
+  color:var(--ink-soft);
+  letter-spacing:0.04em;
+  line-height:1.9;
+}
+.jr-footer-meta a{ color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+
+@media (max-width:720px){
+  .jr-topbar{ padding:20px 6vw; }
+}
+
+  .art-head{ padding:70px 6vw 0; max-width:900px; margin:0 auto; }
+  .art-head .eyebrow{ margin-bottom:22px; }
+  .art-head h1{
+    font-family:'Noto Serif KR', serif; font-weight:300;
+    font-size:clamp(34px,5.4vw,64px); line-height:1.22; letter-spacing:-0.01em;
+    margin-bottom:26px;
+  }
+  .art-head .dek{ font-size:15px; line-height:1.9; color:var(--ink-soft); max-width:600px; margin-bottom:34px; }
+  .art-meta{ display:flex; gap:24px; font-size:11px; color:var(--ink-soft); letter-spacing:0.06em; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0; margin-bottom:54px; }
+
+  .art-hero-media{ width:100%; max-width:1200px; margin:0 auto 70px; padding:0 6vw; }
+  .art-hero-media img{ width:100%; display:block; }
+
+  .art-body{ max-width:700px; margin:0 auto; padding:0 6vw 40px; }
+  .art-body h2{
+    font-family:'Noto Serif KR', serif; font-weight:500;
+    font-size:24px; margin:56px 0 20px; line-height:1.4;
+  }
+  .art-body p{ font-size:15.5px; line-height:2.05; color:#333; margin-bottom:20px; font-weight:300; }
+  .art-body p.lead{ font-size:17px; line-height:1.95; color:var(--ink); }
+  .art-quote{
+    border-left:2px solid var(--gold);
+    padding-left:24px; margin:34px 0;
+    font-size:13.5px; line-height:1.85; color:var(--ink-soft); font-style:normal;
+  }
+  .art-media{ margin:44px 0; }
+  .art-media img{ width:100%; display:block; }
+  .art-media figcaption{ font-size:11px; color:var(--ink-soft); margin-top:10px; letter-spacing:0.03em; }
+
+  .art-nextprev{
+    max-width:700px; margin:0 auto; padding:60px 6vw;
+    display:flex; justify-content:space-between; border-top:1px solid var(--line);
+  }
+  .art-nextprev a{ text-decoration:none; color:var(--ink); font-size:12px; letter-spacing:0.1em; }
+  .art-nextprev .serif{ font-size:19px; display:block; margin-top:8px; }
+
+  .art-sources{ max-width:700px; margin:0 auto; padding:0 6vw 40px; }
+  .art-sources h3{ font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:16px; }
+  .art-sources ul{ list-style:none; }
+  .art-sources li{ font-size:12.5px; color:var(--ink-soft); line-height:2; }
+  .art-sources a{ color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+  <div class="jr-topbar">
+    <div class="jr-logo">BONOLUMIÈRE</div>
+    <div class="jr-crumb"><a href="/">HOME</a> / <a href="journal.html">JOURNAL</a> / <b>No.01</b></div>
+  </div>
+
+  <article>
+    <div class="art-head">
+      <div class="eyebrow gold">ISSUE No.01 — 호스텔 창업</div>
+      <h1 class="serif">그러니깐, 호스텔이나 해볼까?</h1>
+      <p class="dek">정년은 짧고 물가는 오르는데 월급은 그대로다. 지금 뭐라도 하지 않으면 안 될 것 같은 조급함 속에서, "호스텔"이라는 단어가 눈에 들어오기 시작한다.</p>
+      <div class="art-meta">
+        <span>BONOLUMIÈRE DESIGN</span>
+        <span>호스텔 창업 가이드 시리즈</span>
+      </div>
+    </div>
+
+    <div class="art-hero-media">
+      <img src="images/ep1-tourists.png" alt="방한 외국인 관광객 수 추이">
+    </div>
+
+    <div class="art-body">
+      <p class="lead">숙박업이라고 하면 딱 떠오르는 건 모텔이다. 모텔은 왠지 좀 그렇고... 그러다 "호스텔"이라는 단어가 눈에 들어온다. 인스타그램 속 감성 넘치는 게스트하우스 사진, 외국인 배낭여행객들. "어, 이거 괜찮아 보이는데?"</p>
+
+      <h2 class="serif">왜 일반숙박업(모텔) 말고 호스텔인가</h2>
+      <p>흔히 "모텔은 내국인, 호스텔은 외국인"이라 생각하기 쉬운데, 그런 구분이 아니다. 진짜 차이는 이렇다 — 요즘은 모텔을 새로 짓거나 새로 허가받는 게 거의 불가능에 가깝다. 그래서 모텔을 하려면 이미 영업 중인 곳을 통째로 인수하는 방법밖에 없는 경우가 많다. 반면 호스텔은 상대적으로 새로 시작할 수 있는 길이 열려 있는 편이다.</p>
+      <p>여기에 더해 손님층(호스텔은 여행객 중심), 운영 난이도(적은 인력으로도 가능), 초기 투자비(상대적으로 낮음)까지, 여러 면에서 진입 장벽이 낮은 편이다.</p>
+
+      <div class="art-quote">
+        관광진흥법 시행령은 호스텔업을 "배낭여행객 등 개별 관광객의 숙박에 적합한 시설로서 샤워장·취사장 등 편의시설과, 내외국인 관광객을 위한 문화·정보 교류시설을 함께 갖춘 업"으로 정의한다. 화장실·샤워장·취사장은 공동으로 이용하게 할 수 있다는 것도 법에 명시되어 있다.
+      </div>
+
+      <h2 class="serif">왜 지금인가</h2>
+      <p>숫자로 보면 확실하다. 2025년 한 해 동안 한국을 찾은 외국인 관광객은 약 1,894만 명으로, 전년 대비 15.7% 늘었다. 2026년 1~5월 누적으로도 전년 같은 기간보다 21.0% 더 늘었다. 개별여행객이 늘고 있는데, 이들이 바로 호스텔의 주 고객층이다.</p>
+
+      <figure class="art-media">
+        <img src="images/ep1-tourism-biz.png" alt="2023년 전국 관광사업체 현황">
+        <figcaption>2023년 전국 관광사업체 현황 · 자료: 문화체육관광부</figcaption>
+      </figure>
+
+      <p>관광 산업 자체도 커지고 있다. 2023년 기준 전국 관광사업체 수는 38,712개로 전년 대비 10.6% 증가했고, 관광사업체 전체 매출액도 전년 대비 40.5% 늘었다. 그중 관광숙박업은 2,591개(전체의 6.7%)를 차지했다.</p>
+
+      <p>그런데 정작 묵을 곳은 턱없이 부족하다. 서울은 하루에 6,700~10,200개 객실이 모자라는 것으로 추정되고, 이 구조적인 공급 부족은 2029년까지 이어질 전망이다.</p>
+
+      <figure class="art-media">
+        <img src="images/ep1-hotel-shortage.png" alt="서울 호텔 객실 부족 전망">
+        <figcaption>서울 호텔 객실 부족 전망 · 자료: 아시아경제·조선일보·Airbtics·한국관광공사</figcaption>
+      </figure>
+
+      <p>이유는 간단하다 — 호텔 하나를 지어서 영업을 시작하기까지 인허가부터 완공까지 평균 5년이 걸리는데, 그사이 관광객은 계속 늘고 있다. 이 틈을 오피스, 호스텔, 모텔 같은 기존 건물을 개조하는 "컨버전" 방식이 채우고 있다.</p>
+
+      <h2 class="serif">앞으로는 어떨까</h2>
+      <p>여행객들은 획일적인 호텔보다 "그 동네다운" 로컬 감성 숙소를 더 찾는 추세다. 이런 흐름 속에 개인이 하나씩 운영하던 시장에도 "스테이" 형태의 브랜드들이 등장하고 있다. 혼자 처음부터 다 배우기엔 넘어야 할 산이 많은데, 이미 겪어본 시스템의 도움을 받는 방법도 있다 — 이건 시리즈 후반부에서 다시 이야기한다.</p>
+    </div>
+
+    <div class="art-sources">
+      <h3>SOURCES</h3>
+      <ul>
+        <li>한국관광공사 관광지식정보시스템 — <a href="https://know.tour.go.kr">know.tour.go.kr</a></li>
+        <li>문화체육관광부, e-나라지표 — <a href="https://www.index.go.kr">index.go.kr</a></li>
+        <li>관광진흥법 시행령 — <a href="https://www.law.go.kr">law.go.kr</a></li>
+      </ul>
+    </div>
+  </article>
+
+  <div class="art-nextprev">
+    <span></span>
+    <a href="journal-2.html">NEXT<span class="serif">호스텔 vs 게스트하우스 vs 모텔 →</span></a>
+  </div>
+
+  <footer class="jr-footer">
+    <div class="jr-footer-brand serif">BONO LUMIÈRE DESIGN</div>
+    <div class="jr-footer-meta">
+      경기도 용인시 기흥구 서천로201번길 11, 6층 22호 · 사업자등록번호 681-34-01574<br>
+      <a href="https://bonolumiere.co.kr">bonolumiere.co.kr</a>
+    </div>
+  </footer>
+
+</body>
+</html>

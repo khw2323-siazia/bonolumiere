@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>건물 안 사고 호스텔 시작하는 법 — BONOLUMIÈRE JOURNAL</title>
+<meta name="description" content="자금계획부터 오픈까지, 매입이 아닌 임대 후 용도변경을 기준으로 호스텔 창업의 표준 5단계를 정리했습니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   BONOLUMIÈRE JOURNAL — shared stylesheet
+   Editorial / architecture-magazine tone (Cereal-inspired)
+   ========================================================== */
+:root{
+  --paper:#FAF9F6;
+  --ink:#1C1B19;
+  --ink-soft:#6B665C;
+  --line:#E2DED3;
+  --gold:#B08D4F;
+  --white:#FFFFFF;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans KR', sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+
+.serif{ font-family:'Noto Serif KR', serif; }
+
+/* ---------- topbar ---------- */
+.jr-topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:26px 6vw;
+  border-bottom:1px solid var(--line);
+}
+.jr-logo{
+  font-family:'Noto Serif KR', serif;
+  font-weight:600;
+  letter-spacing:0.22em;
+  font-size:14px;
+}
+.jr-crumb{
+  font-size:11px;
+  letter-spacing:0.14em;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+}
+.jr-crumb a{ color:var(--ink-soft); text-decoration:none; }
+.jr-crumb b{ color:var(--ink); font-weight:600; }
+
+/* ---------- labels ---------- */
+.eyebrow{
+  font-size:10.5px;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  font-weight:500;
+}
+.eyebrow.gold{ color:var(--gold); }
+
+/* ---------- footer ---------- */
+.jr-footer{
+  border-top:1px solid var(--line);
+  margin-top:120px;
+  padding:60px 6vw 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.jr-footer-brand{
+  font-family:'Noto Serif KR', serif;
+  font-weight:600;
+  letter-spacing:0.16em;
+  font-size:14px;
+}
+.jr-footer-meta{
+  font-size:11px;
+  color:var(--ink-soft);
+  letter-spacing:0.04em;
+  line-height:1.9;
+}
+.jr-footer-meta a{ color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+
+@media (max-width:720px){
+  .jr-topbar{ padding:20px 6vw; }
+}
+
+  .art-head{ padding:70px 6vw 0; max-width:900px; margin:0 auto; }
+  .art-head .eyebrow{ margin-bottom:22px; }
+  .art-head h1{ font-family:'Noto Serif KR', serif; font-weight:300; font-size:clamp(34px,5.4vw,64px); line-height:1.22; letter-spacing:-0.01em; margin-bottom:26px; }
+  .art-head .dek{ font-size:15px; line-height:1.9; color:var(--ink-soft); max-width:600px; margin-bottom:34px; }
+  .art-meta{ display:flex; gap:24px; font-size:11px; color:var(--ink-soft); letter-spacing:0.06em; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0; margin-bottom:54px; }
+  .art-hero-media{ width:100%; max-width:1200px; margin:0 auto 70px; padding:0 6vw; }
+  .art-hero-media img{ width:100%; display:block; }
+  .art-body{ max-width:700px; margin:0 auto; padding:0 6vw 40px; }
+  .art-body h2{ font-family:'Noto Serif KR', serif; font-weight:500; font-size:24px; margin:56px 0 20px; line-height:1.4; }
+  .art-body p{ font-size:15.5px; line-height:2.05; color:#333; margin-bottom:20px; font-weight:300; }
+  .art-body p.lead{ font-size:17px; line-height:1.95; color:var(--ink); }
+  .art-media{ margin:44px 0; }
+  .art-media img{ width:100%; display:block; }
+  .art-media figcaption{ font-size:11px; color:var(--ink-soft); margin-top:10px; letter-spacing:0.03em; }
+  .step-list{ counter-reset:step; margin:36px 0; }
+  .step-item{ display:flex; gap:24px; padding:22px 0; border-top:1px solid var(--line); }
+  .step-item:last-child{ border-bottom:1px solid var(--line); }
+  .step-num{ font-family:'Noto Serif KR',serif; font-size:22px; color:var(--gold); flex-shrink:0; width:32px; }
+  .step-body h3{ font-family:'Noto Serif KR',serif; font-size:16px; font-weight:500; margin-bottom:6px; }
+  .step-body p{ font-size:13.5px; color:var(--ink-soft); margin:0; }
+  .art-nextprev{ max-width:700px; margin:0 auto; padding:60px 6vw; display:flex; justify-content:space-between; border-top:1px solid var(--line); }
+  .art-nextprev a{ text-decoration:none; color:var(--ink); font-size:12px; letter-spacing:0.1em; }
+  .art-nextprev .serif{ font-size:19px; display:block; margin-top:8px; }
+  .art-sources{ max-width:700px; margin:0 auto; padding:0 6vw 40px; }
+  .art-sources h3{ font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:16px; }
+  .art-sources ul{ list-style:none; }
+  .art-sources li{ font-size:12.5px; color:var(--ink-soft); line-height:2; }
+</style>
+</head>
+<body>
+
+  <div class="jr-topbar">
+    <div class="jr-logo">BONOLUMIÈRE</div>
+    <div class="jr-crumb"><a href="/">HOME</a> / <a href="journal.html">JOURNAL</a> / <b>No.03</b></div>
+  </div>
+
+  <article>
+    <div class="art-head">
+      <div class="eyebrow gold">ISSUE No.03 — 호스텔 창업</div>
+      <h1 class="serif">건물 안 사고<br>호스텔 시작하는 법</h1>
+      <p class="dek">"창업"은 건물을 사는 게 아니라, 기존 건물을 임대해서 용도변경하는 방식을 기준으로 합니다. 건물을 사는 것보다 훨씬 적은 자본으로 시작할 수 있습니다.</p>
+      <div class="art-meta">
+        <span>BONOLUMIÈRE DESIGN</span>
+        <span>호스텔 창업 가이드 시리즈</span>
+      </div>
+    </div>
+
+    <div class="art-hero-media">
+      <img src="images/ep3-buy-vs-lease.png" alt="매입 vs 임대+용도변경">
+    </div>
+
+    <div class="art-body">
+      <p class="lead">호스텔 창업은 "건물 구하고 인테리어만 하면 끝"이 아니라, 순서가 있는 하나의 프로젝트입니다. 크게 5단계로 흘러갑니다.</p>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num serif">01</div>
+          <div class="step-body">
+            <h3 class="serif">자금 계획</h3>
+            <p>얼마짜리 건물을 볼 것인가 — 보증금·월세·공사비 기준으로 대략의 예산부터 잡는다.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num serif">02</div>
+          <div class="step-body">
+            <h3 class="serif">입지선정</h3>
+            <p>그 예산 안에서 용도지역을 확인한다. 용도변경 자체가 불가능한 건물도 있다.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num serif">03</div>
+          <div class="step-body">
+            <h3 class="serif">인허가</h3>
+            <p>용도변경 허가, 소방시설 완비증명, 관광진흥법상 사업자 등록까지 거친다.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num serif">04</div>
+          <div class="step-body">
+            <h3 class="serif">설계·시공</h3>
+            <p>화장실, 접근성(무장애 시설) 등 법적으로 갖춰야 할 기준들을 반영해 실제로 만든다.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num serif">05</div>
+          <div class="step-body">
+            <h3 class="serif">오픈</h3>
+            <p>오픈까지 걸리는 시간, 오픈 이후 운영을 어떻게 할지 결정하는 단계.</p>
+          </div>
+        </div>
+      </div>
+
+      <figure class="art-media">
+        <img src="images/ep3-5steps.png" alt="창업 5단계 프로세스">
+        <figcaption>호스텔 창업 5단계 프로세스</figcaption>
+      </figure>
+
+      <h2 class="serif">정리하면</h2>
+      <p>자금계획→입지선정→인허가→설계시공→오픈까지 순서가 있는 프로젝트다. 특히 자금계획을 가장 먼저 세워야, 나머지 단계에서 헤매지 않는다.</p>
+    </div>
+
+    <div class="art-sources">
+      <h3>SOURCES</h3>
+      <ul>
+        <li>이 편은 창업 프로세스 개론으로 별도 통계·법령 인용 없음 — 세부 근거는 4편 이후 각 편 참조</li>
+      </ul>
+    </div>
+  </article>
+
+  <div class="art-nextprev">
+    <a href="journal-2.html">←<span class="serif">호스텔 vs 게스트하우스 vs 모텔</span></a>
+    <a href="journal-4.html" style="text-align:right;">NEXT<span class="serif">이 건물, 호스텔 해도 되나요? →</span></a>
+  </div>
+
+  <footer class="jr-footer">
+    <div class="jr-footer-brand serif">BONO LUMIÈRE DESIGN</div>
+    <div class="jr-footer-meta">
+      경기도 용인시 기흥구 서천로201번길 11, 6층 22호 · 사업자등록번호 681-34-01574<br>
+      <a href="https://bonolumiere.co.kr">bonolumiere.co.kr</a>
+    </div>
+  </footer>
+
+</body>
+</html>

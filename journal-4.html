@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이 건물, 호스텔 해도 되는 건물인가요? — BONOLUMIÈRE JOURNAL</title>
+<meta name="description" content="서울특별시 도시계획 조례 제31조제2항 원문과 실제 현장 사례로 보는 용도지역 판단 기준.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   BONOLUMIÈRE JOURNAL — shared stylesheet
+   Editorial / architecture-magazine tone (Cereal-inspired)
+   ========================================================== */
+:root{
+  --paper:#FAF9F6;
+  --ink:#1C1B19;
+  --ink-soft:#6B665C;
+  --line:#E2DED3;
+  --gold:#B08D4F;
+  --white:#FFFFFF;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans KR', sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+
+.serif{ font-family:'Noto Serif KR', serif; }
+
+/* ---------- topbar ---------- */
+.jr-topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:26px 6vw;
+  border-bottom:1px solid var(--line);
+}
+.jr-logo{
+  font-family:'Noto Serif KR', serif;
+  font-weight:600;
+  letter-spacing:0.22em;
+  font-size:14px;
+}
+.jr-crumb{
+  font-size:11px;
+  letter-spacing:0.14em;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+}
+.jr-crumb a{ color:var(--ink-soft); text-decoration:none; }
+.jr-crumb b{ color:var(--ink); font-weight:600; }
+
+/* ---------- labels ---------- */
+.eyebrow{
+  font-size:10.5px;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  font-weight:500;
+}
+.eyebrow.gold{ color:var(--gold); }
+
+/* ---------- footer ---------- */
+.jr-footer{
+  border-top:1px solid var(--line);
+  margin-top:120px;
+  padding:60px 6vw 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.jr-footer-brand{
+  font-family:'Noto Serif KR', serif;
+  font-weight:600;
+  letter-spacing:0.16em;
+  font-size:14px;
+}
+.jr-footer-meta{
+  font-size:11px;
+  color:var(--ink-soft);
+  letter-spacing:0.04em;
+  line-height:1.9;
+}
+.jr-footer-meta a{ color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+
+@media (max-width:720px){
+  .jr-topbar{ padding:20px 6vw; }
+}
+
+  .art-head{ padding:70px 6vw 0; max-width:900px; margin:0 auto; }
+  .art-head .eyebrow{ margin-bottom:22px; }
+  .art-head h1{ font-family:'Noto Serif KR', serif; font-weight:300; font-size:clamp(34px,5.4vw,64px); line-height:1.22; letter-spacing:-0.01em; margin-bottom:26px; }
+  .art-head .dek{ font-size:15px; line-height:1.9; color:var(--ink-soft); max-width:600px; margin-bottom:34px; }
+  .art-meta{ display:flex; gap:24px; font-size:11px; color:var(--ink-soft); letter-spacing:0.06em; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0; margin-bottom:54px; }
+  .art-hero-media{ width:100%; max-width:1200px; margin:0 auto 70px; padding:0 6vw; }
+  .art-hero-media img{ width:100%; display:block; }
+  .art-body{ max-width:700px; margin:0 auto; padding:0 6vw 40px; }
+  .art-body h2{ font-family:'Noto Serif KR', serif; font-weight:500; font-size:24px; margin:56px 0 20px; line-height:1.4; }
+  .art-body p{ font-size:15.5px; line-height:2.05; color:#333; margin-bottom:20px; font-weight:300; }
+  .art-body p.lead{ font-size:17px; line-height:1.95; color:var(--ink); }
+  .art-quote{ border-left:2px solid var(--gold); padding-left:24px; margin:34px 0; font-size:13.5px; line-height:1.85; color:var(--ink-soft); }
+  .art-note{ background:#F1EEE6; padding:20px 24px; font-size:13px; line-height:1.8; color:var(--ink-soft); margin:30px 0; }
+  .art-media{ margin:44px 0; }
+  .art-media img{ width:100%; display:block; }
+  .art-media figcaption{ font-size:11px; color:var(--ink-soft); margin-top:10px; letter-spacing:0.03em; }
+  .case-box{ border:1px solid var(--line); padding:24px 26px; margin:26px 0; }
+  .case-box .tag{ font-size:10px; letter-spacing:0.14em; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+  .case-box h4{ font-family:'Noto Serif KR',serif; font-size:16px; margin-bottom:10px; }
+  .case-box p{ font-size:13.5px; color:var(--ink-soft); margin:0; line-height:1.85; }
+  .art-nextprev{ max-width:700px; margin:0 auto; padding:60px 6vw; display:flex; justify-content:space-between; border-top:1px solid var(--line); }
+  .art-nextprev a{ text-decoration:none; color:var(--ink); font-size:12px; letter-spacing:0.1em; }
+  .art-nextprev .serif{ font-size:19px; display:block; margin-top:8px; }
+  .art-sources{ max-width:700px; margin:0 auto; padding:0 6vw 40px; }
+  .art-sources h3{ font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:16px; }
+  .art-sources ul{ list-style:none; }
+  .art-sources li{ font-size:12.5px; color:var(--ink-soft); line-height:2; }
+</style>
+</head>
+<body>
+
+  <div class="jr-topbar">
+    <div class="jr-logo">BONOLUMIÈRE</div>
+    <div class="jr-crumb"><a href="/">HOME</a> / <a href="journal.html">JOURNAL</a> / <b>No.04</b></div>
+  </div>
+
+  <article>
+    <div class="art-head">
+      <div class="eyebrow gold">ISSUE No.04 — 호스텔 창업</div>
+      <h1 class="serif">이 건물, 호스텔<br>해도 되는 건물인가요?</h1>
+      <p class="dek">상업지역이라고 무조건 되는 게 아닙니다. 주거지역 경계와의 거리, 그리고 실제 현장에서 부딪힌 두 가지 사례로 판단 기준을 정리했습니다.</p>
+      <div class="art-meta">
+        <span>BONOLUMIÈRE DESIGN</span>
+        <span>호스텔 창업 가이드 시리즈</span>
+      </div>
+    </div>
+
+    <div class="art-hero-media">
+      <img src="images/ep4-zoning-50m.png" alt="용도지역과 50m 규정">
+    </div>
+
+    <div class="art-body">
+      <p class="lead">3편에서 자금 계획을 세웠다면, 다음은 "이 예산 안에서, 이 건물이 되는 건물인가"를 확인할 차례입니다. 여기서 가장 먼저 나오는 개념이 용도지역입니다.</p>
+
+      <h2 class="serif">용도지역이란</h2>
+      <p>땅마다 "여기는 이런 용도로만 쓸 수 있다"고 정해놓은 게 용도지역이다. 숙박시설은 원칙적으로 상업지역·준주거지역 등 특정 용도지역에서만 가능하다.</p>
+      <p>여기서 헷갈리기 쉬운 부분 — 상업지역이라고 무조건 되는 게 아니다. 서울특별시 도시계획 조례 제31조제2항에 따르면, 그 상업지역 땅이 주거지역 경계로부터 50m 이내면 일반숙박시설·생활숙박시설의 건축·용도변경 자체가 금지된다. 50m 초과 200m까지는 허가권자가 주변환경에 맞지 않다고 판단하면 도시계획위원회 심의를 거쳐 제한할 수 있다.</p>
+
+      <div class="art-quote">
+        서울특별시 도시계획 조례 제31조제2항 — "주거지역 경계로부터 50미터 이내의 지역안에서는 일반숙박시설 및 생활숙박시설과 위락시설로의 용도로 건축 또는 용도변경을 할 수 없으며, 주거지역 경계로부터 50미터 초과 200미터까지는 건축물의 용도·규모 또는 형태가 주거환경·교육환경 등 주변환경에 맞지 않다고 허가권자가 인정하는 경우에는 해당 도시계획위원회의 심의를 거쳐 건축 또는 용도변경을 제한할 수 있다."
+      </div>
+
+      <div class="art-note">참고로 이건 "주거지역 경계" 기준이다. "학교 근처는 안 된다"는 얘기는 완전히 다른 법(교육환경 보호에 관한 법률, 교육지원청 소관)이라, 6편에서 실제 사례와 함께 따로 다룬다.</div>
+
+      <h2 class="serif">실제 사례로 보는 용도지역 이슈</h2>
+
+      <div class="case-box">
+        <div class="tag">CASE 01 · 창신동 4xx번지</div>
+        <h4 class="serif">정비구역 + 역사문화환경보존지역</h4>
+        <p>일반상업지역에 있는 건물이었지만, 정비구역(도시정비법 제19조 행위제한: 신축·증축 불가, 용도변경·대수선은 허용)과 흥인지문 역사문화환경보존지역(문화유산법 제13조, 시행령 제21조의2·21조의3: 국가유산청 현상변경허가 필요)이 겹쳐 있었다. "바로 가능"이 아니라, 두 단계 심의·허가를 모두 통과해야 용도변경이 가능한 케이스였다.</p>
+      </div>
+
+      <div class="case-box">
+        <div class="tag">CASE 02 · 종로5가 9x번지</div>
+        <h4 class="serif">상대보호구역 해당</h4>
+        <p>이 건물은 실제로 상대보호구역(학교경계 50~200m)에 걸쳐 있었다. 토지이음에서 필지 경계선이 상대보호구역 색상 범위 안에 실제로 포함되어 있음을 확인했다. 교육환경보호구역 심의를 거쳐야 하고, 결과에 따라 불가능할 수도 있다.</p>
+      </div>
+
+      <figure class="art-media">
+        <img src="images/ep4-case-compare.png" alt="실제 사례로 보는 용도변경">
+        <figcaption>실제 사례 비교 · 창신동 · 종로5가</figcaption>
+      </figure>
+
+      <h2 class="serif">정리하면</h2>
+      <p>"상업지역이니까 되겠지"라고 넘겨짚으면 안 된다. 반드시 토지이용계획확인원(토지이음)에서 직접 필지를 확인하고, 온라인 확인으로 끝내지 말고 관할 구청 건축과·교육지원청에 직접 전화로 재확인하는 게 안전하다.</p>
+    </div>
+
+    <div class="art-sources">
+      <h3>SOURCES</h3>
+      <ul>
+        <li>서울특별시 도시계획 조례 제31조제2항 — <a href="https://www.law.go.kr">law.go.kr</a></li>
+        <li>도시정비법 제19조 — <a href="https://www.law.go.kr">law.go.kr</a></li>
+        <li>문화유산법 제13조, 시행령 제21조의2·21조의3 — <a href="https://www.law.go.kr">law.go.kr</a></li>
+        <li>토지이음(국토교통부 도시계획정보서비스) — <a href="https://luris.molit.go.kr">luris.molit.go.kr</a></li>
+      </ul>
+    </div>
+  </article>
+
+  <div class="art-nextprev">
+    <a href="journal-3.html">←<span class="serif">건물 안 사고 시작하는 법</span></a>
+    <span style="text-align:right; color:var(--ink-soft);">NEXT<span class="serif" style="color:var(--ink-soft);">소방서가 자꾸 나를 붙잡는 이유 (준비 중)</span></span>
+  </div>
+
+  <footer class="jr-footer">
+    <div class="jr-footer-brand serif">BONO LUMIÈRE DESIGN</div>
+    <div class="jr-footer-meta">
+      경기도 용인시 기흥구 서천로201번길 11, 6층 22호 · 사업자등록번호 681-34-01574<br>
+      <a href="https://bonolumiere.co.kr">bonolumiere.co.kr</a>
+    </div>
+  </footer>
+
+</body>
+</html>
