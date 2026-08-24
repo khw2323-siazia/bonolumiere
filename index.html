@@ -291,6 +291,20 @@
         <div class="pillar"><div class="pillar-num">02</div><div class="pillar-name">신뢰</div><div class="pillar-desc">계약부터 AS까지 책임</div></div>
         <div class="pillar"><div class="pillar-num">03</div><div class="pillar-name">상생</div><div class="pillar-desc">협력사와 함께 성장</div></div>
       </div>
+      <div style="margin-top:36px; border-top:1px solid var(--line); padding-top:28px; display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:flex-start; gap:12px; font-size:14.5px; color:var(--charcoal); line-height:1.6;">
+          <span style="color:var(--gold-deep); font-weight:800;">—</span>
+          <span>주거공간 인테리어 100건 이상 시공 경험 보유</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:12px; font-size:14.5px; color:var(--charcoal); line-height:1.6;">
+          <span style="color:var(--gold-deep); font-weight:800;">—</span>
+          <span>평생 한 분야만 전념한 숙련 장인들과 함께 시공</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:12px; font-size:14.5px; color:var(--charcoal); line-height:1.6;">
+          <span style="color:var(--gold-deep); font-weight:800;">—</span>
+          <span>실내건축협회 기준 + 현장 실측 데이터 기반 자체 견적 시스템 운영</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -556,6 +570,7 @@
       <div class="modal-opt" onclick="selectOpt(this)">오피스텔</div>
     </div>
     <div class="modal-note">상업 공간을 준비 중이신가요? <b onclick="openCommercialModal()">상업공간 견적 알아보기 ›</b></div>
+    <div class="modal-note">호스텔·숙박업 창업을 준비 중이신가요? <b onclick="openHostelModal()">호스텔 상담 신청하기 ›</b></div>
     <button class="modal-next" onclick="goStep1B()">다음</button>
     <span class="modal-close" onclick="askClose()">나중에 볼게요</span>
   </div>
@@ -742,6 +757,39 @@
 </div>
 
 <!-- CRAFTSMAN (협력사) MODAL -->
+<!-- HOSTEL (호스텔·숙박업 창업) MODAL -->
+<div class="modal-overlay" id="hostelModal">
+  <div class="modal-card" id="hostelStep1">
+    <button class="modal-x" onclick="closeOverlay('hostelModal')">✕</button>
+    <div class="modal-title">호스텔·숙박업 창업 상담</div>
+    <div style="font-size:12.5px; color:var(--gray); text-align:center; margin-bottom:18px; margin-top:-10px;">즉시 견적이 아닌, 창업 상담 신청입니다.</div>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:18px;">
+      <input type="text" id="hosName" placeholder="성함" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="tel" id="hosPhone" placeholder="연락처" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <input type="text" id="hosRegion" placeholder="관심 지역 (예: 부산 전포동)" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit;">
+      <select id="hosStage" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit; background:#fff;">
+        <option value="">현재 단계 선택</option>
+        <option>아직 막연하게 고민 중</option>
+        <option>건물 매입 전 알아보는 중</option>
+        <option>매물을 보는 중</option>
+        <option>인허가 진행 중</option>
+        <option>이미 운영 중, 리모델링 검토</option>
+      </select>
+      <textarea id="hosNote" placeholder="상담받고 싶은 내용 (선택)" rows="3" style="padding:13px; border:1.5px solid var(--line); border-radius:12px; font-size:14px; font-family:inherit; resize:vertical;"></textarea>
+    </div>
+    <button class="modal-next" id="hosSubmitBtn" onclick="submitHostel()">상담 신청하기</button>
+    <span class="modal-close" onclick="closeOverlay('hostelModal')">닫기</span>
+  </div>
+  <div class="modal-card" id="hostelStep2" style="display:none;">
+    <div style="text-align:center; padding:20px 0;">
+      <div style="width:56px; height:56px; border-radius:50%; background:var(--sage-light); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:26px; color:var(--sage);">✓</div>
+      <div class="modal-title" style="margin-bottom:12px;">상담 신청이 접수됐어요</div>
+      <div style="font-size:13.5px; color:var(--gray); line-height:1.8; margin-bottom:28px;">호스텔 창업 관련 안내를 확인하신 후, 순차적으로 연락드릴게요.</div>
+      <button class="modal-next" onclick="closeOverlay('hostelModal')" style="margin-bottom:0;">확인했어요</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="craftsmanModal">
   <div class="modal-card" id="craftsmanStep1">
     <button class="modal-x" onclick="closeOverlay('craftsmanModal')">✕</button>
@@ -861,6 +909,10 @@
   function openCommercialModal(){
     document.getElementById('spaceModal').classList.remove('open');
     openOverlay('commercialModal');
+  }
+  function openHostelModal(){
+    document.getElementById('spaceModal').classList.remove('open');
+    openOverlay('hostelModal');
   }
   function askClose(){ document.getElementById('confirmModal').classList.add('open'); }
   function closeConfirm(){ document.getElementById('confirmModal').classList.remove('open'); }
@@ -1148,6 +1200,31 @@
       } else { alert("죄송해요, 잠시 후 다시 시도해주세요."); }
     } catch (err) { alert("네트워크 오류가 발생했어요."); }
     finally { btn.innerText = "등록 신청하기"; btn.disabled = false; }
+  }
+
+  // ---------------- 호스텔 창업 상담 신청 ----------------
+  async function submitHostel(){
+    const name = document.getElementById('hosName').value.trim();
+    const phone = document.getElementById('hosPhone').value.trim();
+    if (!name || !phone) { alert("성함과 연락처는 필수 입력이에요."); return; }
+
+    const btn = document.getElementById('hosSubmitBtn');
+    btn.innerText = "전송 중..."; btn.disabled = true;
+    const payload = {
+      name, phone,
+      region: document.getElementById('hosRegion').value.trim(),
+      stage: document.getElementById('hosStage').value,
+      note: document.getElementById('hosNote').value.trim(),
+    };
+    try {
+      const res = await fetch(GAS_URL, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify({ type:"hostel", data: payload }) });
+      const json = await res.json();
+      if (json.ok) {
+        document.getElementById('hostelStep1').style.display = 'none';
+        document.getElementById('hostelStep2').style.display = 'block';
+      } else { alert("죄송해요, 잠시 후 다시 시도해주세요."); }
+    } catch (err) { alert("네트워크 오류가 발생했어요."); }
+    finally { btn.innerText = "상담 신청하기"; btn.disabled = false; }
   }
 
   // ---------------- 마케터제휴 신청 ----------------

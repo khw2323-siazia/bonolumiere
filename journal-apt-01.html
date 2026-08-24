@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>저희 일위대가는 이렇게 만들어집니다 | 보노루미에르 저널</title>
+<meta name="description" content="인테리어 견적, 감이 아니라 데이터로 산출합니다.">
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+:root{
+  --cream:#FAF9F6; --white:#FFFFFF; --charcoal:#201F1C;
+  --gold:#B08B57; --gold-deep:#8C6D3F; --gold-light:#F0E6D2;
+  --sage:#7A9B76; --sage-light:#E8EFE5;
+  --clay:#B5654A; --clay-light:#F3E4DE;
+  --ink:#3A4750; --ink-light:#E7ECEE;
+  --line:#EAE6DC; --gray:#6F6B63;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:'Pretendard', -apple-system, sans-serif; color:var(--charcoal); background:var(--white); line-height:1.7;}
+a{text-decoration:none; color:inherit;}
+header{position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between;
+  padding:20px 48px; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+.logo{font-family:Georgia,'Noto Serif KR',serif; font-weight:400; letter-spacing:6px; font-size:19px;}
+.back-link{font-size:13.5px; color:var(--gray); font-weight:600;}
+.wrap{max-width:760px; margin:0 auto; padding:72px 24px 120px;}
+.kicker{font-size:12px; letter-spacing:3px; color:var(--gold-deep); font-weight:700; text-transform:uppercase; margin-bottom:18px;}
+.doc-title{font-size:34px; font-weight:800; line-height:1.4; letter-spacing:-0.5px; margin-bottom:14px;}
+.doc-sub{font-size:14.5px; color:var(--gray); margin-bottom:44px; padding-bottom:36px; border-bottom:1px solid var(--line);}
+.dropcap:first-letter{
+  float:left; font-family:Georgia,'Noto Serif KR',serif; font-size:64px; line-height:0.8;
+  padding:8px 10px 0 0; font-weight:700; color:var(--gold-deep);
+}
+h2.sec{font-size:19px; font-weight:800; margin:44px 0 14px; color:var(--charcoal); display:flex; align-items:center; gap:10px;}
+h2.sec::before{content:''; width:22px; height:2px; background:var(--gold); display:inline-block;}
+p{font-size:15.5px; margin-bottom:14px; color:#3d3a35;}
+ul.list{margin:10px 0 18px 0; list-style:none;}
+ul.list li{position:relative; padding-left:18px; font-size:15px; margin-bottom:9px; color:#3d3a35;}
+ul.list li::before{content:'—'; position:absolute; left:0; color:var(--gold-deep);}
+.pullquote{
+  font-family:Georgia,'Noto Serif KR',serif; font-size:22px; font-weight:400; line-height:1.6;
+  color:var(--charcoal); padding:30px 0; margin:36px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  text-align:center;
+}
+.callout{background:var(--gold-light); border-radius:14px; padding:22px 24px; margin:26px 0; font-size:14.5px; color:#3d3a35;}
+.callout b{color:var(--gold-deep);}
+.conclusion{margin-top:40px; padding-top:26px; border-top:2px solid var(--charcoal); font-size:16px; font-weight:700;}
+.footer-nav{max-width:760px; margin:0 auto; padding:0 24px 90px; display:flex; justify-content:space-between; font-size:13px; color:var(--gray);}
+.footer-nav a{font-weight:700; color:var(--gold-deep);}
+footer.site-footer{padding:40px 48px; text-align:center; font-size:12px; color:var(--gray); border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="index.html">BONOLUMI&Egrave;RE</a>
+  <a class="back-link" href="journal.html">← 저널 목록</a>
+</header>
+
+<div class="wrap">
+  <div class="kicker">SYSTEM · 일위대가</div>
+  <div class="doc-title">저희 일위대가는 이렇게 만들어집니다</div>
+  <div class="doc-sub">인테리어 견적, 감이 아니라 데이터로 산출합니다.</div>
+  <div class="dropcap">
+<p>아파트 인테리어 견적에서 가장 자주 나오는 불만은 "왜 이 가격인지 모르겠다"는 것입니다. 자재비인지 인건비인지, 어디에 얼마가 들어갔는지 알 수 없는 견적서가 여전히 많습니다.</p>
+<h2 class="sec">일위대가란</h2>
+<p>자재비·노무비·경비를 항목별로 산출한 기준 데이터입니다. 이 데이터가 견적서의 뼈대가 됩니다.</p>
+<h2 class="sec">보노루미에르 일위대가 산출 기준</h2>
+<ul class="list">
+  <li>실내건축협회 노임 기준 반영</li>
+  <li>실제 현장 실측 데이터와 교차 검증</li>
+  <li>협회 기준과 실측치가 다를 경우 실측값 우선 반영</li>
+  <li>자재비·노무비·경비 항목별 분리 관리</li>
+</ul>
+<h2 class="sec">항목별 내역서가 중요한 이유</h2>
+<p>"일괄 000만원" 방식 견적은 항목별 근거를 확인할 방법이 없습니다. 항목별 내역서는 자재명·규격·수량·단가까지 확인이 가능하고, 온라인 가견적 시스템과 연동되어 방문 상담 전에도 예상 비용을 확인할 수 있습니다.</p>
+</div>
+  <div class="pullquote">말이 아니라 근거로, 저희는 이렇게 견적을 만듭니다.</div>
+</div>
+
+<div class="footer-nav"><a href="journal.html">← 전체 저널 목록으로</a></div>
+
+<footer class="site-footer">BONO LUMI&Egrave;RE DESIGN · 수도권 아파트·상업공간 인테리어</footer>
+</body>
+</html>
