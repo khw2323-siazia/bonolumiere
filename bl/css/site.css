@@ -315,3 +315,35 @@ body.has-sum{padding-bottom:96px}
 .gl h3{font-size:17px;margin:0 0 4px}
 .gl p{font-size:14.5px}
 @media(min-width:600px){.pn{grid-template-columns:1fr 1fr}.std-list{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== 견적 화면 개편: 집 정보 입력 · 하단 바 · 상담 신청 창 ===== */
+.sheet[hidden],.sheet-bg[hidden],.estpanel[hidden],.estbar[hidden]{display:none!important}
+.eg{margin:0 0 16px}
+.eg-l{font-weight:700;font-size:15px;margin:0 0 8px;color:var(--ink)}
+.eg-l small{font-weight:400;font-size:12px;color:var(--mut);margin-left:6px}
+.eg .opt-chips{margin:0}
+.eg .opt-chips .pill{min-width:58px;text-align:center}
+.linkbtn{background:none;border:0;color:var(--deep);text-decoration:underline;font-weight:700;font-size:12px;cursor:pointer;padding:6px 4px}
+.estbar{height:84px}
+.estbar .barl{flex:1;min-width:0;text-align:left;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit}
+.estbar .barl b{display:block;font-size:19px}
+.estbar .barl .note{color:var(--ok);font-size:11px}
+.estbar .btn{flex:none;margin-left:10px;padding:10px 14px;min-height:48px;font-size:14px}
+.has-estbar{padding-bottom:112px}
+.estpanel{position:fixed;left:0;right:0;bottom:84px;z-index:40;max-height:55vh;overflow:auto;background:var(--wh);border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(43,36,32,.12);padding:14px 16px}
+.sheet-bg{position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(43,36,32,.5);z-index:59}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;max-height:92vh;overflow:auto;background:var(--wh);border-radius:20px 20px 0 0;padding:18px 18px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -10px 34px rgba(0,0,0,.22)}
+.sheet-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.sheet-h b{font-size:18px}
+.sheet-h button{width:44px;height:44px;border:0;background:none;font-size:28px;line-height:1;cursor:pointer;color:var(--mut)}
+.row2.cx{grid-template-columns:2fr 1fr}
+@media(min-width:768px){.sheet{left:50%;right:auto;transform:translateX(-50%);width:520px;bottom:5vh;border-radius:20px}.estpanel{left:50%;right:auto;transform:translateX(-50%);width:640px;border-radius:16px 16px 0 0}}
+
+/* 견적 화면 다듬기: 첫 화면 간격, 신청 창 안쪽 이중 테두리 제거 */
+.eg .py{margin:0 0 8px}
+.eg .chips{margin-bottom:4px}
+.eg .err{margin:2px 0 0}
+.sheet .form{border:0;padding:0;box-shadow:none;background:transparent}
+
+.eg{margin:0 0 12px}
+.eg-l{margin:0 0 6px}
